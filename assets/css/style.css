@@ -1,0 +1,29 @@
+header {
+    text-align: center;
+    border: 2px solid black;
+}
+
+#jumbotron-image-container { 
+    background-image: url("../images/jumbotron-placeholder-image.png"); 
+    height: 250px;
+    border-top: 2px solid black;
+}
+
+#search-history-container {
+    text-align: center;
+    border-right: 2px solid black;
+    height: 1000px;
+    margin-top: 50px;
+}
+
+#current-search-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 50px;
+}
+
+footer {
+    text-align: center;
+    border: 2px solid black;
+    margin-top: 50px;
+}
