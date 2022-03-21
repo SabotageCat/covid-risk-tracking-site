@@ -33,16 +33,16 @@ function getCountryOptions(event) {
         // dynamically create country option selections for user
         for (var i = 0; i < Object.keys(data).length; i++) {
             debugger;
-            if (Object.values(data)[i].continent === "Africa"||"Asia"||"Europe"||"North America"||"South America"||"Oceania") {
+            if (!Object.values(data)[i].continent) {
+                // If not a country in json file then skip 
+                i++;
+            } else {
                 // create <option> for country in <select>
                 var optionEl = document.createElement("option");
                 optionEl.value = Object.keys(data)[i];
                 optionEl.text = Object.values(data)[i].location;
                 // append <option> to <select>
                 userCountryOption.appendChild(optionEl);
-            } else {
-                // If not a country in json file then skip 
-                i++;
             }
 
         };
