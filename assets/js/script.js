@@ -3,33 +3,31 @@
 function covidDataSet(event) {
     // debugger;
     event.preventDefault();
-    // select countryoption in the DOM
-    var userCountryOption = document.getElementById("country-option");
+    // select user country option
+    var countryOption = document.getElementById("country-option");
+    var countrySelected = countryOption.options[countryOption.selectedIndex].value;
 
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
     // fetch JSON data
     fetch(apiUrl).then(function(response) {
         return response.json()
     }).then(function(data) {
-        console.log(data);
+        console.log(data[countrySelected]);
+        countryOption.selectedIndex = 0;
     }).catch(function() {
         alert("Err!")
     });
 };
 
-function getCountryOptions(event) {
-    // prevent page refresh
-    event.preventDefault();
+function getCountryOptions() {
     // covid json data
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
     // fetch json data
     fetch(apiUrl).then(function(response) {
         return response.json()
     }).then(function(data) {
-        console.log(Object.values(data)[0].continent);
         // select country-option <select> in the DOM
-        var userCountryOption = document.getElementById("country-option");
-        userCountryOption.innerHTML = '';
+        var CountryOption = document.getElementById("country-option");
         // dynamically create country option selections for user
         for (var i = 0; i < Object.keys(data).length; i++) {
             debugger;
@@ -42,9 +40,8 @@ function getCountryOptions(event) {
                 optionEl.value = Object.keys(data)[i];
                 optionEl.text = Object.values(data)[i].location;
                 // append <option> to <select>
-                userCountryOption.appendChild(optionEl);
+                CountryOption.appendChild(optionEl);
             }
-
         };
     }).catch(function() {
         alert("Err!");
@@ -52,4 +49,4 @@ function getCountryOptions(event) {
 };
 
 document.getElementById("search-button").addEventListener("click", covidDataSet);
-document.getElementById("country-option").addEventListener("click", getCountryOptions);
+getCountryOptions();
