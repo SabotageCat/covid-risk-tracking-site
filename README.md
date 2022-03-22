@@ -19,11 +19,11 @@ The site contains a feature that allows the users to chose and compare a pair of
 
 ## Contribution
 Made with ❤️ by 
-Alex Lu
-Grace Marcoux
-Cortnie Muscari
-Robert D Gonzales
-Carlos Ariel Mata Franco
+* Alex Lu
+* Grace Marcoux
+* Cortnie Muscari
+* Robert D Gonzales
+* Carlos Ariel Mata Franco
 
 ## Screenshots Working Website:
 
