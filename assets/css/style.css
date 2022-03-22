@@ -1,25 +1,73 @@
+* {
+    margin: 1;
+    padding: 1;
+}
+
+/*This is supposed to help the text sizes flex when a users views the site on their phone, but still allows the user to zoom in and out of the website*/
+html {
+    -ms-test-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    background: #DEE1DD;
+}
+
 header {
+    margin: auto;
     text-align: center;
-    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+header .header-text {
+    background: #2F575D;
+    height: 150px;
+    padding: 15px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+header .header-text h1 {
+    color: #c4cdc1;
+    text-shadow: 3px 3px #244449;
+}
+
+header .header-text h4 {
+    color: #ccddc6;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 25px;
+    text-shadow: 2px 2px #244449;
+}
+
+header .total-infection-rates {
+    background: #6D9197;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: sticky;
+    position: -webkit-sticky;
+    padding: 15px;
 }
 
 #jumbotron-image-container { 
     background-image: url("../images/jumbotron-placeholder-image.png"); 
-    height: 250px;
-    border-top: 2px solid black;
+    height: 350px;
+    border-top: 1px solid #2F575D;
 }
 
 #search-history-container {
     text-align: center;
-    border-right: 2px solid black;
     height: 1000px;
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 #current-search-container {
     text-align: center;
     height: 1000px;
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 #risk-ratings {
@@ -55,9 +103,18 @@ header {
 }
 
 footer {
+    background: #c4cdc1;
     text-align: center;
-    border: 2px solid black;
-    margin-top: 50px;
+    border: 1px solid #2F575D;
+    border-radius: 7px;
+    margin: 25px 0 auto 0; 
 }
-/* testing merge */
-/* testing merge again */
+
+footer h4 a {
+    color: #369baa
+}
+
+footer h4 a:hover {
+    cursor: pointer;
+    color: #658B6F;
+}

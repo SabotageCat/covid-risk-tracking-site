@@ -5,20 +5,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>COVID-19 Risk Tracker</title>
+  <style>
+    .columns, .column{
+      background-color: white;
+      border: 1px #99AEAD solid;
+      padding: 10px;
+      border-radius: 7px;
+    }
+  </style>
 </head>
 
 <body>
   <!-- HEADER SECTION -->
   <header>
-    <div>
-      <h1>COVID-19 Risk Tracker</h1>
-      <h2>A helpful resource that lets you stay safe and informed when traveling to European countries</h2>
-      <div>
-      <!-- (Where dynamically generated TOTAL infection & vaccination stats will be displayed)-->
+    <div class="u-full-width">
+
+      <div class="header-text">
+        <h1>COVID-19 Risk Tracker</h1>
+        <h4>A helpful resource that lets you stay safe and informed when traveling to countries around the world</h4>
       </div>
+      <div class="total-infection-rates">
+        <!-- (Where dynamically generated TOTAL infection & vaccination stats will be displayed)-->
+        placeholder
+      </div>
+
+      <!--Jumbo Img-->
       <div id="jumbotron-image-container">
         <img>
       </div>
@@ -31,15 +45,15 @@
     <div class="row">
 
       <!-- Search History Side Bar -->
-      <section id="search-history-container" class="two columns">
-        <h3><u>Search History</u></h3>
+      <section id="search-history-container" class="one-third column">
+        <h4><u>Search History</u></h4>
         <div id="search-history-buttons">
           <!-- (Where dynamically generated search buttons will be displayed)-->
         </div>
       </section>
 
       <!-- Current Search Section -->
-      <section id="current-search-container" class="ten columns">
+      <section id="current-search-container" class="two-thirds column">
         <form>
           <label for="country">Select from the dropdown menu to display <strong>current statistics</strong> and the <strong>risk assessment rating
           </strong> for a particular European country:</label>
@@ -79,4 +93,3 @@
 </body>
 
 </html>
-
