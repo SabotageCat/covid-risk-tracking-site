@@ -19,6 +19,18 @@ function covidDataSet(event) {
     });
 };
 
+function flagDataSet(event) {
+
+    event.preventDefault
+    // select user country option
+    var countryOption = document.getElementById("country-option");
+    var countrySelected = countryOption.options[countryOption.selectedIndex].value;
+
+    var flagUrl = "https://www.countryflagsapi.com/png/"  + countrySelected
+    console.log(flagUrl)
+};
+
+
 function getCountryOptions() {
     // covid json data
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
@@ -30,7 +42,6 @@ function getCountryOptions() {
         var CountryOption = document.getElementById("country-option");
         // dynamically create country option selections for user
         for (var i = 0; i < Object.keys(data).length; i++) {
-            debugger;
             if (!Object.values(data)[i].continent) {
                 // If not a country in json file then skip 
                 i++;
@@ -48,5 +59,7 @@ function getCountryOptions() {
     });
 };
 
+
 document.getElementById("search-button").addEventListener("click", covidDataSet);
+document.getElementById("search-button").addEventListener("click", flagDataSet);
 getCountryOptions();
