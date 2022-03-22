@@ -42,6 +42,7 @@ function displayCovidStats(country) {
     } else {
         console.log("Severe!");
     }
+
 };
 
 function getCountryOptions() {
@@ -55,7 +56,6 @@ function getCountryOptions() {
         var CountryOption = document.getElementById("country-option");
         // dynamically create country option selections for user
         for (var i = 0; i < Object.keys(data).length; i++) {
-            debugger;
             if (!Object.values(data)[i].continent) {
                 // If not a country in json file then skip 
                 i++;
