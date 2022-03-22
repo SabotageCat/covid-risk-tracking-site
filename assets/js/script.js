@@ -13,10 +13,35 @@ function covidDataSet(event) {
         return response.json()
     }).then(function(data) {
         console.log(data[countrySelected]);
+        displayCovidStats(data[countrySelected]);
         countryOption.selectedIndex = 0;
     }).catch(function() {
-        alert("Err!")
+        alert("Err!");
     });
+};
+
+function displayCovidStats(country) {
+    var countryVax = country.people_fully_vaccinated_per_hundred;
+    // var countryInfection = country.positive_rate;
+
+    console.log("Country: " + country.location, "Vaccination Rates: " + countryVax);
+
+    if (!country.positive_rate) {
+        console.log("No positive rate!");
+        var infectionRate = (country.new_cases_smoothed / 25000) * 100;
+    } else {
+        var infectionRate = country.positive_rate;
+    }
+
+    if (infectionRate < 0.05) {
+        console.log("Low!");
+    } else if (infectionRate <= 0.099) {
+        console.log("Moderate!");
+    } else if (infectionRate <= 0.5) { 
+        console.log("High!");
+    } else {
+        console.log("Severe!");
+    }
 };
 
 function getCountryOptions() {
