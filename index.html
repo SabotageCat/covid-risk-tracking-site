@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>COVID-19 Risk Tracker</title>
+  <style>
+    .columns, .column{
+      background-color: white;
+      border: 1px #99AEAD solid;
+      padding: 10px;
+      border-radius: 7px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <header>
+    <div class="u-full-width">
+
+      <div class="header-text">
+        <h1>COVID-19 Risk Tracker</h1>
+        <h4>A helpful resource that lets you stay safe and informed when traveling to countries around the world</h4>
+      </div>
+      <div class="total-infection-rates">
+        <!-- (Where dynamically generated TOTAL infection & vaccination stats will be displayed)-->
+        placeholder
+      </div>
+
+      <!--Jumbo Img-->
+      <div id="jumbotron-image-container">
+        <img>
+      </div>
+    </div>
+  </header>
+
+  <br/>
+  <div id="risk-ratings" class="row">
+    <h5 class="titleriskassessment"><strong><u>Risk Assessment Rating System:</u></strong></h5>
+    <ul class="ratings-list">
+      <li><span id="low">LOW</span>: Full vaccination is recommended before traveling to this destination.</li>
+      <li><span id="moderate">MODERATE</span>: Unvaccinated travelers who are at increased risk for severe illness should avoid travel to this destination.</li>
+      <li><span id="high">HIGH</span>: Unvaccinated travelers should avoid nonessential travel to this destination.</li>
+      <li><span id="very-high">VERY HIGH</span>: Avoid travel to this destination.</li>
+    </ul>
+    <p class="moreinfo">For further information about risk levels, please visit the <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/how-level-is-determined.html" target="_blank">CDC's Determining Risk Levels Page.</a></p>
+  </div>
+
+  <!-- MAIN SECTION -->
+  <main>
+    <div class="row">
+
+      <!-- Search History Side Bar -->
+      <section id="search-history-container" class="one-third column">
+        <h6><strong>Search History</strong></h6>
+        <div id="search-history-buttons">
+          <!-- (Where dynamically generated search buttons will be displayed)-->
+        </div>
+      </section>
+
+      <!-- Current Search Section -->
+      <section id="current-search-container" class="two-thirds column">
+        <form>
+          <label for="country">Select from the dropdown menu to display <strong>current statistics</strong> and the <strong>risk assessment rating
+          </strong> for a particular country:</label>
+          <select id="country-option" name="country">
+            <option disabled selected>Please Select a Country</option>
+          </select>
+          <input type="button" id="search-button" class="button button-primary" value="+">
+        </form>
+        <div id="current-search-info">
+          <!-- (Where dynamically generated country cards will be displayed)-->
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+
+  <!-- FOOTER SECTION -->
+  <footer>
+    <h6>For additional information concerning travel and COVID-19, please visit the <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/index.html" target="_blank">CDC Travel Guidelines site.</a></h6>
+  </footer>
+
+
+  <!-- Script Link to .js file -->
+  <script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>
