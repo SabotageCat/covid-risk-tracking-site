@@ -70,6 +70,38 @@ header .total-infection-rates {
     margin-top: 25px;
 }
 
+#risk-ratings {
+    border: 2px solid black;
+    margin-left: 500px;
+    margin-right: 500px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.ratings-list {
+    text-align: left;
+}
+
+#low {
+    font-weight: bold;
+    color: rgb(33, 160, 8);
+}
+
+#moderate {
+    font-weight: bold;
+    color: rgb(194, 191, 9);
+}
+
+#high {
+    font-weight: bold;
+    color: rgb(214, 118, 8);
+}
+
+#very-high {
+    font-weight: bold;
+    color: rgb(231, 12, 12);
+}
+
 footer {
     background: #c4cdc1;
     text-align: center;
