@@ -40,15 +40,14 @@
 
       <!-- Current Search Section -->
       <section id="current-search-container" class="ten columns">
-        <h3>Enter a European country name below to display its <strong>current statistics</strong> and <strong>risk assessment rating
-        </strong>:</h3>
-        <input type="text" name="country-name" id="country-name" list="country-list">
-        <datalist id="country-list">
-          <option>Italy</option>
-          <option>Spain</option>
-          <option>Greece</option>
-        </datalist>
-        <button id="search-button">+</button>
+        <form>
+          <label for="country">Select from the dropdown menu to display <strong>current statistics</strong> and the <strong>risk assessment rating
+          </strong> for a particular European country:</label>
+          <select id="country-option" name="country">
+            <option disabled selected>Please Select a Country</option>
+          </select>
+          <input type="button" id="search-button" value="+">
+        </form>
         <div id="current-search-info">
           <!-- (Where dynamically generated country cards will be displayed)-->
         </div>
