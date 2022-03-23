@@ -83,7 +83,7 @@ function displayCovidStats(country) {
     var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected
     var imgEl = document.createElement("img");
     imgEl.src = countryFlag;
-    imgEl.alt = country.location;
+    imgEl.alt = "flag of " + country.location;
     pEl.appendChild(imgEl);
 
     // Add Covid Cases
