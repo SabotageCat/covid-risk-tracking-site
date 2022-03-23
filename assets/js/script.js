@@ -3,11 +3,17 @@ var countryFlag = "https://www.flags.co.uk/client/uploads/HVYYZFxB25xBnATl9zjmfE
 
 // retrieve dataset from outworldindata.org
 function covidDataSet(event) {
-    // debugger;
+    // prevent page refresh on click
     event.preventDefault();
+
     // select user country option
     var countryOption = document.getElementById("country-option");
     var countrySelected = countryOption.options[countryOption.selectedIndex].value;
+
+    // notify user they must select a country
+    if (countrySelected == false) {
+        return userWarning();
+    }
 
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
     // fetch JSON data
@@ -24,9 +30,10 @@ function covidDataSet(event) {
     });
 };
 
+// display COVID-19 stats for user selected country
 function displayCovidStats(country) {
 
-    // 
+    // get fully vaxxed percentage
     if (!country.people_fully_vaccinated_per_hundred) {
         var countryVax = "Unavailable Data!";
     } else {
@@ -35,7 +42,7 @@ function displayCovidStats(country) {
 
     console.log("Country: " + country.location, "Vaccination Rates: " + countryVax);
 
-    // Calculate infection rate
+    // calculate infection rate
     if (!country.positive_rate) {
         console.log("No positive rate!");
         var infectionRate = (country.new_cases_smoothed / 25000) * 100 + "%";
@@ -46,16 +53,16 @@ function displayCovidStats(country) {
     // determine risk rating
     if (infectionRate < 0.05) {
         console.log("Low!");
-        var riskRating = "LOW!";
+        var riskRating = ["low", "LOW!"];
     } else if (infectionRate <= 0.099) {
         console.log("Moderate!");
-        var riskRating = "MODERATE!";
+        var riskRating = ["moderate", "MODERATE!"];
     } else if (infectionRate <= 0.5) { 
         console.log("High!");
-        var riskRating = "HIGH!";
+        var riskRating = ["high", "HIGH!"];
     } else {
         console.log("Severe!");
-        var riskRating = "SEVERE!";
+        var riskRating = ["very-high", "SEVERE!"];
     }
 
     // construct display outputs
@@ -91,7 +98,7 @@ function displayCovidStats(country) {
     
     // Add Risk Rating
     var riskRatingEl = document.createElement("p");
-    riskRatingEl.innerText = "Risk Assessment Rating: " + riskRating;
+    riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1];
     pEl.appendChild(riskRatingEl);
 
     // Display outputs
@@ -101,6 +108,7 @@ function displayCovidStats(country) {
 
 };
 
+// generate <option> countries in <select>
 function getCountryOptions() {
     // covid json data
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
@@ -131,6 +139,24 @@ function getCountryOptions() {
     }).catch(function() {
         alert("Err!");
     });
+};
+
+// Display warning for user if no country selected
+function userWarning() {
+
+    var currentSearchContainer = document.getElementById("current-search-info");
+
+    // Add user warning
+    var userWarning = document.createElement("h3");
+    var styleEl = document.querySelector("style");
+    styleEl.textContent = styleEl.textContent + "@keyframes warning {100% {opacity: 0;}";
+    userWarning.style.color = "red";
+    userWarning.style.animation = "warning 0.25s 3 reverse";
+    userWarning.textContent = "Please select a country!";
+
+    // display user warning
+    currentSearchContainer.innerHTML = "";
+    currentSearchContainer.appendChild(userWarning);
 };
 
 // Event listener for user search
