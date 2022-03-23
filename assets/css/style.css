@@ -23,7 +23,7 @@ header {
 
 header .header-text {
     background: #2F575D;
-    height: 150px;
+    height: fit-content;
     padding: 15px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
