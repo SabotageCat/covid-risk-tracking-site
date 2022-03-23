@@ -109,6 +109,7 @@ function displayCovidStats(country) {
 };
 
 // generate <option> countries in <select>
+
 function getCountryOptions() {
     // covid json data
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
@@ -163,4 +164,7 @@ function userWarning() {
 document.getElementById("search-button").addEventListener("click", covidDataSet);
 
 // dynamically create country <option> on page load
+
+document.getElementById("search-button").addEventListener("click", covidDataSet);
+document.getElementById("search-button").addEventListener("click", flagDataSet);
 getCountryOptions();
