@@ -71,6 +71,9 @@ function displayCovidStats(country) {
     pEl.appendChild(countryHeaderEl);
 
     // Add flag
+    var countryOption = document.getElementById("country-option");
+    var countrySelected = countryOption.options[countryOption.selectedIndex].value;
+    var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected
     var imgEl = document.createElement("img");
     imgEl.src = countryFlag;
     imgEl.alt = country.location;
