@@ -3,7 +3,6 @@ var countryFlag = "https://www.flags.co.uk/client/uploads/HVYYZFxB25xBnATl9zjmfE
 
 // retrieve dataset from outworldindata.org
 function covidDataSet(event) {
-    debugger;
     event.preventDefault();
 
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
@@ -11,6 +10,7 @@ function covidDataSet(event) {
     fetch(apiUrl).then(function(response) {
         return response.json()
     }).then(function(data) {
+        // if (initial search) else (compare)
         if (!document.getElementById("country-1")) {
             // select user country option
             var countryOption = document.getElementById("country-option");
@@ -88,9 +88,9 @@ function displayCovidStatsPrimary(country) {
 
     // if comparing then display sise-by-side
     if (document.getElementById("country-1")) {
-        divEl.className = "one-half column";
+        divEl.className = "one-half column first-country-div country-div";
     } else {
-        divEl.className = "column";
+        divEl.className = "column first-country-div country-div";
     }
 
     var pEl = document.createElement("p");
@@ -104,24 +104,28 @@ function displayCovidStatsPrimary(country) {
     // Add flag
     var countryOption = document.getElementById("country-option");
     var countrySelected = countryOption.options[countryOption.selectedIndex].value;
-    var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected
+    var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected;
     var imgEl = document.createElement("img");
+    imgEl.id = "first-flag";
     imgEl.src = countryFlag;
     imgEl.alt = "flag of " + country.location;
     pEl.appendChild(imgEl);
 
     // Add Covid Cases
     var covidCasesEl = document.createElement("p");
+    covidCasesEl.id = "first-covid-cases";
     covidCasesEl.innerText = "New Weekly COVID-19 Cases: " + Math.floor(country.new_cases_smoothed);
     pEl.appendChild(covidCasesEl);
 
     // Add Vaccination Rates
     var vaxRateEl = document.createElement("p");
+    vaxRateEl.id = "first-vax-rate";
     vaxRateEl.innerText = "Current Vaccination Rate: " + countryVax;
     pEl.appendChild(vaxRateEl);
     
     // Add Risk Rating
     var riskRatingEl = document.createElement("p");
+    riskRatingEl.id = "first-risk-rating";
     riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1] + "</span>";
     pEl.appendChild(riskRatingEl);
 
@@ -154,7 +158,6 @@ function displayCovidStatsSecondary(country) {
 
     // Calculate infection rate
     if (!country.positive_rate) {
-        console.log("No positive rate!");
         var infectionRate = (country.new_cases_smoothed / 25000) * 100 + "%";
     } else {
         var infectionRate = country.positive_rate;
@@ -179,7 +182,7 @@ function displayCovidStatsSecondary(country) {
     var currentSearchContainer = document.getElementById("current-search-info");
     var divEl = document.createElement("div");
     divEl.id = "country-2";
-    divEl.className = "one-half column";
+    divEl.className = "one-half column second-country-div country-div";
 
     var pEl = document.createElement("p");
     pEl.textContent = "Current Statistics for:";
@@ -192,24 +195,28 @@ function displayCovidStatsSecondary(country) {
     // Add flag
     var countryOption = document.getElementById("country-option-2");
     var countrySelected = countryOption.options[countryOption.selectedIndex].value;
-    var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected
+    var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected;
     var imgEl = document.createElement("img");
+    imgEl.id = "second-flag";
     imgEl.src = countryFlag;
     imgEl.alt = "flag of " + country.location;
     pEl.appendChild(imgEl);
 
     // Add Covid Cases
     var covidCasesEl = document.createElement("p");
+    covidCasesEl.id = "second-covid-cases";
     covidCasesEl.innerText = "New Weekly COVID-19 Cases: " + Math.floor(country.new_cases_smoothed);
     pEl.appendChild(covidCasesEl);
 
     // Add Vaccination Rates
     var vaxRateEl = document.createElement("p");
+    vaxRateEl.id = "second-vax-rate";
     vaxRateEl.innerText = "Current Vaccination Rate: " + countryVax;
     pEl.appendChild(vaxRateEl);
     
     // Add Risk Rating
     var riskRatingEl = document.createElement("p");
+    riskRatingEl.id = "second-risk-rating";
     riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1] + "</span>";
     pEl.appendChild(riskRatingEl);
 
