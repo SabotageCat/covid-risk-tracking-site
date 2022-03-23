@@ -39,18 +39,21 @@
     </div>
   </header>
 
+  <br/>
+  <div id="risk-ratings" class="row">
+    <h5 class="titleriskassessment"><strong><u>Risk Assessment Rating System:</u></strong></h5>
+    <ul class="ratings-list">
+      <li><span id="low">LOW</span>: Full vaccination is recommended before traveling to this destination.</li>
+      <li><span id="moderate">MODERATE</span>: Unvaccinated travelers who are at increased risk for severe illness should avoid travel to this destination.</li>
+      <li><span id="high">HIGH</span>: Unvaccinated travelers should avoid nonessential travel to this destination.</li>
+      <li><span id="severe">SEVERE</span>: Avoid travel to this destination.</li>
+    </ul>
+    <p class="moreinfo">For further information about risk levels, please visit the <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/how-level-is-determined.html" target="_blank">CDC's Determining Risk Levels Page.</a></p>
+  </div>
 
   <!-- MAIN SECTION -->
   <main>
     <div class="row">
-
-      <!-- Search History Side Bar -->
-      <section id="search-history-container" class="one-third column">
-        <h4><u>Search History</u></h4>
-        <div id="search-history-buttons">
-          <!-- (Where dynamically generated search buttons will be displayed)-->
-        </div>
-      </section>
 
       <!-- Current Search Section -->
       <section id="current-search-container" class="two-thirds column">
@@ -60,30 +63,28 @@
           <select id="country-option" name="country">
             <option disabled selected value="">Please Select a Country</option>
           </select>
-          <input type="button" id="search-button" value="+">
+          <input type="button" id="search-button" class="button button-primary" value="+">
         </form>
         <div id="current-search-info">
           <!-- (Where dynamically generated country cards will be displayed)-->
         </div>
+      </section>
 
-        <div id="risk-ratings">
-          <p><strong><u>Risk Assessment Rating System:</u></strong></p>
-          <ul class="ratings-list">
-            <li><span id="low">LOW</span>: Full vaccination is recommended before traveling to this destination.</li>
-            <li><span id="moderate">MODERATE</span>: Unvaccinated travelers who are at increased risk for severe illness should avoid travel to this destination.</li>
-            <li><span id="high">HIGH</span>: Unvaccinated travelers should avoid nonessential travel to this destination.</li>
-            <li><span id="very-high">VERY HIGH</span>: Avoid travel to this destination.</li>
-          </ul>
-          <p>For further information about risk levels, please visit the <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/how-level-is-determined.html" target="_blank">CDC's Determining Risk Levels Page.</a></p>
+       <!-- Search History Side Bar -->
+       <section id="search-history-container" class="one-third column">
+        <h6><strong>Search History</strong></h6>
+        <div id="search-history-buttons">
+          <!-- (Where dynamically generated search buttons will be displayed)-->
         </div>
       </section>
+
     </div>
   </main>
 
 
   <!-- FOOTER SECTION -->
   <footer>
-    <h4>For additional information concerning travel and COVID-19, please visit the <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/index.html" target="_blank">CDC Travel Guidelines site.</a></h4>
+    <h6>For additional information concerning travel and COVID-19, please visit the <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/index.html" target="_blank">CDC Travel Guidelines site.</a></h6>
   </footer>
 
 

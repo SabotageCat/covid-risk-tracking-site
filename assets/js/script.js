@@ -166,5 +166,4 @@ document.getElementById("search-button").addEventListener("click", covidDataSet)
 // dynamically create country <option> on page load
 
 document.getElementById("search-button").addEventListener("click", covidDataSet);
-document.getElementById("search-button").addEventListener("click", flagDataSet);
 getCountryOptions();
