@@ -10,11 +10,8 @@ html {
 }
 body {
     background: #DEE1DD;
-    font-family: sans-serif;
-    flex-direction: column;
 }
 
-/* TITLE & HEAD */
 header {
     margin: auto;
     text-align: center;
@@ -25,7 +22,7 @@ header {
 
 header .header-text {
     background: #2F575D;
-    height: max-content;
+    height: 150px;
     padding: 15px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
@@ -44,9 +41,8 @@ header .header-text h4 {
     text-shadow: 2px 2px #244449;
 }
 
-/* INFECTION RATES */
 header .total-infection-rates {
-    background: #6D9197;
+    background: black;
     top: 0;
     display: flex;
     justify-content: center;
@@ -56,19 +52,34 @@ header .total-infection-rates {
     padding: 15px;
     border-right: 1px solid #2F575D;
     border-left: 1px solid #2F575D;
-    border-bottom: 1px solid #2F575D;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: -4px;
+}
+
+#jumbotron-image-container { 
+    background-image: url("../images/nasaworld.png"); 
+    height: 350px;
+    border-top: 5px;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-/* JUMBO */
-#jumbotron-image-container { 
-    background-image: url("../images/jumbotron-placeholder-image.png"); 
-    height: 350px;
-    border-radius: 7px;
+#search-history-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
 }
 
-/* RISK RATINGS */
+#current-search-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
+}
+
 #risk-ratings {
     padding: 25px;
 }
@@ -91,7 +102,7 @@ header .total-infection-rates {
 #moderate {
     font-weight: bold;
     color: rgb(194, 191, 9);
-    text-shadow: 1px 1px #969c94;
+    text-shadow: 1px 1px #969C94;
 }
 
 #high {
@@ -100,15 +111,15 @@ header .total-infection-rates {
     text-shadow: 1px 1px #b1b8ae;
 }
 
-#very-high {
+#severe {
     font-weight: bold;
     color: rgb(231, 12, 12);
     text-shadow: 1px 1px #b1b8ae;
 }
 
 .moreinfo {
-    text-align: center;
     font-style: italic;
+    text-align: center;
     color: #2F575D;
 }
 
@@ -119,18 +130,6 @@ header .total-infection-rates {
 .moreinfo a:hover {
     cursor: pointer;
     color: #658B6F;
-}
-
-/* SEARCH HISTORY */
-#search-history-container {
-    text-align: center;
-    height: 1000px;
-    margin-top: 25px;
-}
-
-#search-history-container h6 {
-    font-size: 15px;
-    margin-bottom: 10px;
 }
 
 /* CURRENT SEARCHES */
@@ -150,12 +149,24 @@ header .total-infection-rates {
     color: #658B6F;
 }
 
+/* SEARCH HISTORY */
+#search-history-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
+}
+
+#search-history-container h6 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
 /* FOOTER */
 footer {
-    background: #c4cdc1;
-    border: 1px solid #969c94;
+    background: #C4CDC1;
+    border: 1px solid #969C94;
     border-radius: 7px;
-    margin: 25px 0 auto 0; 
+    margin: 25px 0 auto 0;
     padding: 10px;
     padding-bottom: 0;
     display: flex;
