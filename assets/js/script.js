@@ -1,3 +1,6 @@
+// object array for search history
+var historyArr = [];
+
 // temp flag, waiting for flag api
 var countryFlag = "https://www.flags.co.uk/client/uploads/HVYYZFxB25xBnATl9zjmfEakGu9w6pBVAKo4iXfx.jpeg";
 
@@ -12,17 +15,24 @@ function covidDataSet(event) {
     }).then(function(data) {
         // if (initial search) else (compare)
         if (!document.getElementById("country-1")) {
+
             // select user country option
             var countryOption = document.getElementById("country-option");
             var countrySelected = countryOption.options[countryOption.selectedIndex].value;
+
             // Issue user warning if no country is selected
             if (countrySelected == false) {
                 return userWarning();
             } else {
                 document.getElementById("current-search-info").innerHTML = "";
             }
+
             // Send data request to displayCovidStats function
             displayCovidStatsPrimary(data[countrySelected]);
+
+            // Create search history
+            searchHistory(data[countrySelected].location);
+
             // Enable country comparison
             createCompareOption();
 
@@ -30,18 +40,25 @@ function covidDataSet(event) {
             // select user country option
             var countryOption1 = document.getElementById("country-option");
             var countrySelected1 = countryOption1.options[countryOption1.selectedIndex].value;
+
             // select user country option 2
             var countryOption2 = document.getElementById("country-option-2");
             var countrySelected2 = countryOption2.options[countryOption2.selectedIndex].value;
+
             // Issue user warning if no country is selected
             if (countrySelected2 == "Please Select a Country") {
                 displayCovidStatsPrimary(data[countrySelected1]);
                 return userWarning();
             }
+
             // Send data request to displayCovidStatsPrimary function
             displayCovidStatsPrimary(data[countrySelected1]);
+
             // Send data request to displayCovidStatsSecondary
             displayCovidStatsSecondary(data[countrySelected2]);
+
+            // Create search history
+            searchHistory(data[countrySelected1].location, data[countrySelected2].location);
         }
         
     }).catch(function() {
@@ -226,6 +243,55 @@ function displayCovidStatsSecondary(country) {
 
 };
 
+function searchHistory(country1, country2) {
+    console.log(country1);
+    // If no second country selected
+    if (!country2) {
+        var countryToPush = {"name": country1, "id0": country1};
+        historyArr.push(countryToPush);
+        console.log(historyArr);
+    } else {
+        var countriesToPush = {"name": country1 + " & " + country2, "id0": country1, "id1": country2};
+        historyArr.push(countriesToPush);
+    }
+
+    // set localStorage
+    // localStorage.setItem("covid-country-search-items", historyArr);
+    
+    // clear search btns
+    document.getElementById("search-history-buttons").innerHTML = "";
+
+    // create search history btns
+    for (var i = 0; i < historyArr.length; i++) {
+        var searchHistoryBtn = document.createElement("button");
+        searchHistoryBtn.textContent = historyArr[i].name;
+        searchHistoryBtn.className = "search-history-btn one-third";
+        searchHistoryBtn.id = historyArr[i].name;
+        document.getElementById("search-history-buttons").appendChild(searchHistoryBtn);
+    }
+    document.getElementById("search-history-buttons").addEventListener("click", returnSearchHistoryResult);
+};
+
+function returnSearchHistoryResult(event) {
+
+    if (event.target.id.trim().search('<>') > 1) {
+        // split compared countries into 2 array strings
+        var names = event.target.id.split("<>");
+
+        // trim each country name
+        names = names.map(function(element) {
+            return element.trim();
+        });
+
+        console.log("finalNames: ", names[0], names[1]);
+
+        // re-search function
+    }
+
+    // get id of search btn
+    var historyItem = event.target.id;
+
+}
 
 function createCompareOption() {
         // get existing elements
