@@ -3,14 +3,8 @@ var countryFlag = "https://www.flags.co.uk/client/uploads/HVYYZFxB25xBnATl9zjmfE
 
 // retrieve dataset from outworldindata.org
 function covidDataSet(event) {
-    debugger;
+
     event.preventDefault();
-
-
-    // notify user they must select a country
-    if (countrySelected == false) {
-        return userWarning();
-    }
 
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
     // fetch JSON data
@@ -21,8 +15,15 @@ function covidDataSet(event) {
             // select user country option
             var countryOption = document.getElementById("country-option");
             var countrySelected = countryOption.options[countryOption.selectedIndex].value;
+            // Issue user warning if no country is selected
+            if (countrySelected == false) {
+                return userWarning();
+            }
             // Send data request to displayCovidStats function
             displayCovidStatsPrimary(data[countrySelected]);
+            // Enable country comparison
+            createCompareOption();
+
         } else {
             // select user country option
             var countryOption1 = document.getElementById("country-option");
@@ -39,11 +40,6 @@ function covidDataSet(event) {
     }).catch(function() {
         alert("Err!");
     });
-
-    // Enable country comparison
-    if (!document.getElementById("compare-btn")) {
-        compareWith();
-    }
 };
 
 function displayCovidStatsPrimary(country) {
@@ -54,8 +50,6 @@ function displayCovidStatsPrimary(country) {
     } else {
         var countryVax = country.people_fully_vaccinated_per_hundred + "%";
     }
-
-    console.log("Country: " + country.location, "Vaccination Rates: " + countryVax);
 
     // calculate infection rate
     if (!country.positive_rate) {
@@ -118,7 +112,7 @@ function displayCovidStatsPrimary(country) {
     
     // Add Risk Rating
     var riskRatingEl = document.createElement("p");
-    riskRatingEl.innerText = "Risk Assessment Rating: " + riskRating;
+    riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1] + "</span>";
     pEl.appendChild(riskRatingEl);
 
     // DO NOT clear if comparing
@@ -136,14 +130,12 @@ function displayCovidStatsPrimary(country) {
 
 function displayCovidStatsSecondary(country) {
 
-    // 
+    // get fully vaxxed rate
     if (!country.people_fully_vaccinated_per_hundred) {
-        var countryVax = "Unavailable Data!";
+        var countryVax = "Data unavailable!";
     } else {
         var countryVax = country.people_fully_vaccinated_per_hundred + "%";
     }
-
-    console.log("Country: " + country.location, "Vaccination Rates: " + countryVax);
 
     // Calculate infection rate
     if (!country.positive_rate) {
@@ -156,16 +148,16 @@ function displayCovidStatsSecondary(country) {
     // determine risk rating
     if (infectionRate < 0.05) {
         console.log("Low!");
-        var riskRating = "LOW!";
+        var riskRating = ["low", "LOW!"];
     } else if (infectionRate <= 0.099) {
         console.log("Moderate!");
-        var riskRating = "MODERATE!";
+        var riskRating = ["moderate", "MODERATE!"];
     } else if (infectionRate <= 0.5) { 
         console.log("High!");
-        var riskRating = "HIGH!";
+        var riskRating = ["high", "HIGH!"];
     } else {
         console.log("Severe!");
-        var riskRating = "SEVERE!";
+        var riskRating = ["very-high", "SEVERE!"];
     }
 
     // construct display outputs
@@ -200,7 +192,7 @@ function displayCovidStatsSecondary(country) {
     
     // Add Risk Rating
     var riskRatingEl = document.createElement("p");
-    riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1];
+    riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1] + "</span>";
     pEl.appendChild(riskRatingEl);
 
     // Display outputs
@@ -209,10 +201,6 @@ function displayCovidStatsSecondary(country) {
 
 };
 
-function compareWith() {
-    // Create <select> for comparison
-    createCompareOption();
-}
 
 function createCompareOption() {
         // get existing elements
@@ -250,9 +238,6 @@ function getCountryOptions(countryOption) {
     fetch(apiUrl).then(function(response) {
         return response.json()
     }).then(function(data) {
-
-        // // select country-option <select> in the DOM
-        // var CountryOption = ;
 
         // dynamically create country option selections for user
         for (var i = 0; i < Object.keys(data).length; i++) {
