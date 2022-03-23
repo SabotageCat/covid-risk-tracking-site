@@ -100,7 +100,7 @@ header .total-infection-rates {
     text-shadow: 1px 1px #b1b8ae;
 }
 
-#very-high {
+#severe {
     font-weight: bold;
     color: rgb(231, 12, 12);
     text-shadow: 1px 1px #b1b8ae;
@@ -121,18 +121,6 @@ header .total-infection-rates {
     color: #658B6F;
 }
 
-/* SEARCH HISTORY */
-#search-history-container {
-    text-align: center;
-    height: 1000px;
-    margin-top: 25px;
-}
-
-#search-history-container h6 {
-    font-size: 15px;
-    margin-bottom: 10px;
-}
-
 /* CURRENT SEARCHES */
 #current-search-container {
     text-align: center;
@@ -148,6 +136,18 @@ header .total-infection-rates {
 #current-search-container button:hover {
     cursor: pointer;
     color: #658B6F;
+}
+
+/* SEARCH HISTORY */
+#search-history-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
+}
+
+#search-history-container h6 {
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 
 /* FOOTER */
