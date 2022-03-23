@@ -105,6 +105,10 @@ function displayCovidStatsPrimary(country) {
     var countryOption = document.getElementById("country-option");
     var countrySelected = countryOption.options[countryOption.selectedIndex].value;
     var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected;
+    console.log(countrySelected);
+    if (countrySelected == "OWID_KOS") {
+        var countryFlag = "https://www.countryflagsapi.com/png/kosovo";
+    }
     var imgEl = document.createElement("img");
     imgEl.id = "first-flag";
     imgEl.src = countryFlag;
@@ -196,6 +200,9 @@ function displayCovidStatsSecondary(country) {
     var countryOption = document.getElementById("country-option-2");
     var countrySelected = countryOption.options[countryOption.selectedIndex].value;
     var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected;
+    if (countrySelected === "OWID_KOS") {
+        var countryFlag = "https://www.countryflagsapi.com/png/kosovo";
+    }
     var imgEl = document.createElement("img");
     imgEl.id = "second-flag";
     imgEl.src = countryFlag;
@@ -311,9 +318,4 @@ document.getElementById("search-button").addEventListener("click", covidDataSet)
 
 // dynamically create country <option> on page load
 
-<<<<<<< HEAD
-document.getElementById("search-button").addEventListener("click", covidDataSet);
-getCountryOptions();
-=======
 getCountryOptions(document.getElementById("country-option"));
->>>>>>> develop
