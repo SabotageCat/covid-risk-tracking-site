@@ -267,8 +267,7 @@ function getCountryOptions(countryOption) {
         // dynamically create country option selections for user
         for (var i = 0; i < Object.keys(data).length; i++) {
             if (!Object.values(data)[i].continent) {
-                // If not a country in json file then skip 
-                i++;
+                // If not a country in json file then skip
             } else {
                 // create <option> for country in <select>
                 var optionEl = document.createElement("option");
