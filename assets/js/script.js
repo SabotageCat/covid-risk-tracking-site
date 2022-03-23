@@ -78,9 +78,12 @@ function displayCovidStats(country) {
     pEl.appendChild(countryHeaderEl);
 
     // Add flag
+    var countryOption = document.getElementById("country-option");
+    var countrySelected = countryOption.options[countryOption.selectedIndex].value;
+    var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected
     var imgEl = document.createElement("img");
     imgEl.src = countryFlag;
-    imgEl.alt = country.location;
+    imgEl.alt = "flag of " + country.location;
     pEl.appendChild(imgEl);
 
     // Add Covid Cases
@@ -106,6 +109,7 @@ function displayCovidStats(country) {
 };
 
 // generate <option> countries in <select>
+
 function getCountryOptions() {
     // covid json data
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
@@ -160,4 +164,7 @@ function userWarning() {
 document.getElementById("search-button").addEventListener("click", covidDataSet);
 
 // dynamically create country <option> on page load
+
+document.getElementById("search-button").addEventListener("click", covidDataSet);
+document.getElementById("search-button").addEventListener("click", flagDataSet);
 getCountryOptions();
