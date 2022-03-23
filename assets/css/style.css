@@ -10,11 +10,8 @@ html {
 }
 body {
     background: #DEE1DD;
-    font-family: sans-serif;
-    flex-direction: column;
 }
 
-/* TITLE & HEAD */
 header {
     margin: auto;
     text-align: center;
@@ -25,7 +22,7 @@ header {
 
 header .header-text {
     background: #2F575D;
-    height: max-content;
+    height: 150px;
     padding: 15px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
@@ -44,7 +41,6 @@ header .header-text h4 {
     text-shadow: 2px 2px #244449;
 }
 
-/* INFECTION RATES */
 header .total-infection-rates {
     background: black;
     top: 0;
@@ -62,7 +58,6 @@ header .total-infection-rates {
     margin-bottom: -4px;
 }
 
-/* JUMBO */
 #jumbotron-image-container { 
     background-image: url("../images/nasaworld.png"); 
     height: 350px;
@@ -73,7 +68,18 @@ header .total-infection-rates {
     background-repeat: no-repeat;
 }
 
-/* RISK RATINGS */
+#search-history-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
+}
+
+#current-search-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
+}
+
 #risk-ratings {
     padding: 25px;
 }
@@ -96,7 +102,7 @@ header .total-infection-rates {
 #moderate {
     font-weight: bold;
     color: rgb(194, 191, 9);
-    text-shadow: 1px 1px #969c94;
+    text-shadow: 1px 1px #969C94;
 }
 
 #high {
@@ -112,8 +118,8 @@ header .total-infection-rates {
 }
 
 .moreinfo {
-    text-align: center;
     font-style: italic;
+    text-align: center;
     color: #2F575D;
 }
 
@@ -157,10 +163,10 @@ header .total-infection-rates {
 
 /* FOOTER */
 footer {
-    background: #c4cdc1;
-    border: 1px solid #969c94;
+    background: #C4CDC1;
+    border: 1px solid #969C94;
     border-radius: 7px;
-    margin: 25px 0 auto 0; 
+    margin: 25px 0 auto 0;
     padding: 10px;
     padding-bottom: 0;
     display: flex;
