@@ -46,7 +46,7 @@ header .header-text h4 {
 
 /* INFECTION RATES */
 header .total-infection-rates {
-    background: #6D9197;
+    background: black;
     top: 0;
     display: flex;
     justify-content: center;
@@ -56,16 +56,21 @@ header .total-infection-rates {
     padding: 15px;
     border-right: 1px solid #2F575D;
     border-left: 1px solid #2F575D;
-    border-bottom: 1px solid #2F575D;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: -4px;
 }
 
 /* JUMBO */
 #jumbotron-image-container { 
-    background-image: url("../images/jumbotron-placeholder-image.png"); 
+    background-image: url("../images/nasaworld.png"); 
     height: 350px;
-    border-radius: 7px;
+    border-top: 5px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* RISK RATINGS */
