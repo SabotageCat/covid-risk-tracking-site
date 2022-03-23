@@ -3,7 +3,7 @@ var countryFlag = "https://www.flags.co.uk/client/uploads/HVYYZFxB25xBnATl9zjmfE
 
 // retrieve dataset from outworldindata.org
 function covidDataSet(event) {
-
+    debugger;
     event.preventDefault();
 
     var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
@@ -18,6 +18,8 @@ function covidDataSet(event) {
             // Issue user warning if no country is selected
             if (countrySelected == false) {
                 return userWarning();
+            } else {
+                document.getElementById("current-search-info").innerHTML = "";
             }
             // Send data request to displayCovidStats function
             displayCovidStatsPrimary(data[countrySelected]);
@@ -31,6 +33,11 @@ function covidDataSet(event) {
             // select user country option 2
             var countryOption2 = document.getElementById("country-option-2");
             var countrySelected2 = countryOption2.options[countryOption2.selectedIndex].value;
+            // Issue user warning if no country is selected
+            if (countrySelected2 == "Please Select a Country") {
+                displayCovidStatsPrimary(data[countrySelected1]);
+                return userWarning();
+            }
             // Send data request to displayCovidStatsPrimary function
             displayCovidStatsPrimary(data[countrySelected1]);
             // Send data request to displayCovidStatsSecondary
@@ -71,7 +78,7 @@ function displayCovidStatsPrimary(country) {
         var riskRating = ["high", "HIGH!"];
     } else {
         console.log("Severe!");
-        var riskRating = ["very-high", "SEVERE!"];
+        var riskRating = ["severe", "SEVERE!"];
     }
 
     // construct display outputs
@@ -118,6 +125,11 @@ function displayCovidStatsPrimary(country) {
     riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1] + "</span>";
     pEl.appendChild(riskRatingEl);
 
+    // remove user warning
+    if (document.getElementById("user-warning") == true) {
+        currentSearchContainer.innerHTML = "";
+    }
+
     // DO NOT clear if comparing
     if (document.getElementById("country-1")) {
         currentSearchContainer.innerHTML = "";
@@ -160,7 +172,7 @@ function displayCovidStatsSecondary(country) {
         var riskRating = ["high", "HIGH!"];
     } else {
         console.log("Severe!");
-        var riskRating = ["very-high", "SEVERE!"];
+        var riskRating = ["severe", "SEVERE!"];
     }
 
     // construct display outputs
@@ -178,9 +190,12 @@ function displayCovidStatsSecondary(country) {
     pEl.appendChild(countryHeaderEl);
 
     // Add flag
+    var countryOption = document.getElementById("country-option-2");
+    var countrySelected = countryOption.options[countryOption.selectedIndex].value;
+    var countryFlag = "https://www.countryflagsapi.com/png/"  + countrySelected
     var imgEl = document.createElement("img");
     imgEl.src = countryFlag;
-    imgEl.alt = country.location;
+    imgEl.alt = "flag of " + country.location;
     pEl.appendChild(imgEl);
 
     // Add Covid Cases
@@ -221,7 +236,7 @@ function createCompareOption() {
     
         // create option element
         var compareOptionEl = document.createElement("option");
-        compareOptionEl.innerText = "Please Select a Country";
+        compareOptionEl.textContent = "Please Select a Country";
         compareOptionEl.selected = true;
         compareOptionEl.disabled = true; 
     
@@ -267,16 +282,20 @@ function userWarning() {
 
     var currentSearchContainer = document.getElementById("current-search-info");
 
+    if (!document.getElementById("country-1")) {
+        currentSearchContainer.innerHTML = "";
+    } 
+
     // Add user warning
     var userWarning = document.createElement("h3");
     var styleEl = document.querySelector("style");
     styleEl.textContent = styleEl.textContent + "@keyframes warning {100% {opacity: 0;}";
+    userWarning.id = "user-warning";
     userWarning.style.color = "red";
     userWarning.style.animation = "warning 0.25s 3 reverse";
     userWarning.textContent = "Please select a country!";
 
     // display user warning
-    currentSearchContainer.innerHTML = "";
     currentSearchContainer.appendChild(userWarning);
 };
 
