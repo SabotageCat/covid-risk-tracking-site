@@ -19,7 +19,7 @@ This in order for the user to have a clearer level of safety when choosing a tra
 
 ## Built With
 * HTML
-* CSS
+* CSS Skeleton: http://getskeleton.com/ 
 * JavaScript
 * Server Sided API's
 
@@ -41,4 +41,8 @@ Made with ❤️ by
 
 ## Comparison Feature:
 ![compare](https://user-images.githubusercontent.com/96638258/159819447-55584eb8-7679-4b86-9456-ee8e8063e1a7.PNG)
+
+## Jumbotron Img Source:
+NASA's iss040e123843 img: https://images.nasa.gov/details-iss040e123843 
+Download img: images-assets.nasa.gov/image/iss040e123843/iss040e123843~orig.jpg
 
