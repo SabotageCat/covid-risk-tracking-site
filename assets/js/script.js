@@ -19,6 +19,7 @@ function covidDataSet(event) {
             // select user country option
             var countryOption = document.getElementById("country-option");
             var countrySelected = countryOption.options[countryOption.selectedIndex].value;
+            console.log(countrySelected);
 
             // Issue user warning if no country is selected
             if (countrySelected == false) {
@@ -31,7 +32,7 @@ function covidDataSet(event) {
             displayCovidStatsPrimary(data[countrySelected]);
 
             // Create search history
-            searchHistory(data[countrySelected].location);
+            searchHistory(data[countrySelected].location, countrySelected);
 
             // Enable country comparison
             createCompareOption();
@@ -58,7 +59,7 @@ function covidDataSet(event) {
             displayCovidStatsSecondary(data[countrySelected2]);
 
             // Create search history
-            searchHistory(data[countrySelected1].location, data[countrySelected2].location);
+            searchHistory(data[countrySelected1].location, countrySelected1, data[countrySelected2].location, countrySelected2);
         }
         
     }).catch(function() {
@@ -243,15 +244,15 @@ function displayCovidStatsSecondary(country) {
 
 };
 
-function searchHistory(country1, country2) {
+function searchHistory(country1, country1Value, country2, country2Value) {
     console.log(country1);
     // If no second country selected
     if (!country2) {
-        var countryToPush = {"name": country1, "id0": country1};
+        var countryToPush = {"name": country1, "id0": country1Value};
         historyArr.push(countryToPush);
         console.log(historyArr);
     } else {
-        var countriesToPush = {"name": country1 + " & " + country2, "id0": country1, "id1": country2};
+        var countriesToPush = {"name": country1 + " & " + country2, "id0": country1Value, "id1": country2Value};
         historyArr.push(countriesToPush);
     }
 
@@ -285,7 +286,7 @@ function returnSearchHistoryResult(event) {
 
         console.log("finalNames: ", names[0], names[1]);
 
-        // re-search function
+        // search again
     }
 
     // get id of search btn
