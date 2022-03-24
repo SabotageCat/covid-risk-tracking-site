@@ -3,7 +3,7 @@
 
 
 ## Purpose
-n December of 2019 the virus SARS-CoV-2 was first discovered in Wuhan, China. Although mostly unknown by the majority at the time, now it is practically impossible to find anyone that has not been affected to what is now globally known as the Covid-19 Pandemic. Although several aspects of life have been returning to what was pre-covid normal, its significance and existence remains very relevant especially due to to the virus’ variants that have been appearing.
+In December of 2019 the virus SARS-CoV-2 was first discovered in Wuhan, China. Although mostly unknown by the majority at the time, now it is practically impossible to find anyone that has not been affected to what is now globally known as the Covid-19 Pandemic. Although several aspects of life have been returning to what was pre-covid normal, its significance and existence remains very relevant especially due to to the virus’ variants that have been appearing.
 
 The purpose of our project is to create a site that is easily accessible in which users can input a countries they have interest in traveling to and in return the site will dictate the current levels of vaccination status and covid infection rates in order for the user to get a risk assessment.
 
@@ -34,10 +34,10 @@ Made with ❤️ by
 
 ## Screenshots of covid-risk-tracking-site:
 
-# Main Page:
+## Main Page:
 ![working-ui](https://user-images.githubusercontent.com/96638258/159818859-f06314b3-07bc-4363-a6c5-1c07f3c46fef.PNG)
 
-# Comparison Feature:
+## Comparison Feature:
 ![compare](https://user-images.githubusercontent.com/96638258/159819447-55584eb8-7679-4b86-9456-ee8e8063e1a7.PNG)
 
 
