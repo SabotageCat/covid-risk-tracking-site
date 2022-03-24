@@ -264,7 +264,7 @@ function searchHistory(country1, country1Value, country2, country2Value) {
     for (var i = 0; i < historyArr.length; i++) {
         var searchHistoryBtn = document.createElement("button");
         searchHistoryBtn.textContent = historyArr[i].name;
-        searchHistoryBtn.className = "search-history-btn one-third";
+        searchHistoryBtn.className = "search-history-btn";
 
         // if there is a second country
         if ("id1" in historyArr[i] == true) {
