@@ -1,0 +1,191 @@
+* {
+    margin: 1;
+    padding: 1;
+}
+
+/*This is supposed to help the text sizes flex when a users views the site on their phone, but still allows the user to zoom in and out of the website*/
+html {
+    -ms-test-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    background: #DEE1DD;
+    font-family: sans-serif;
+}
+
+header {
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+header .header-text {
+    background: #2F575D;
+    height: fit-content;
+    padding: 15px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+header .header-text h1 {
+    color: #c4cdc1;
+    text-shadow: 3px 3px #244449;
+}
+
+header .header-text h4 {
+    color: #ccddc6;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 25px;
+    text-shadow: 2px 2px #244449;
+}
+
+header .total-infection-rates {
+    background: black;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: sticky;
+    position: -webkit-sticky;
+    padding: 15px;
+    border-right: 1px solid #2F575D;
+    border-left: 1px solid #2F575D;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: -4px;
+}
+
+#jumbotron-image-container { 
+    background-image: url("../images/nasaworld.png"); 
+    height: 350px;
+    border-top: 5px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#search-history-container {
+    text-align: center;
+    height: fit-content;
+    min-height: 1000px;
+    margin-top: 25px;
+}
+
+#current-search-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
+}
+
+#risk-ratings {
+    padding: 25px;
+}
+
+.titleriskassessment {
+    text-align: center;
+    color: #2F575D;
+}
+
+.ratings-list {
+    text-align: left;
+}
+
+#low {
+    font-weight: bold;
+    color: rgb(33, 160, 8);
+    text-shadow: 1px 1px #b1b8ae;
+}
+
+#moderate {
+    font-weight: bold;
+    color: rgb(194, 191, 9);
+    text-shadow: 1px 1px #969C94;
+}
+
+#high {
+    font-weight: bold;
+    color: rgb(214, 118, 8);
+    text-shadow: 1px 1px #b1b8ae;
+}
+
+#severe {
+    font-weight: bold;
+    color: rgb(231, 12, 12);
+    text-shadow: 1px 1px #b1b8ae;
+}
+
+.moreinfo {
+    font-style: italic;
+    text-align: center;
+    color: #2F575D;
+}
+
+.moreinfo a {
+    color: #369baa
+}
+
+.moreinfo a:hover {
+    cursor: pointer;
+    color: #658B6F;
+}
+
+/* CURRENT SEARCHES */
+#current-search-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
+}
+
+#current-search-container label {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+#current-search-container button:hover {
+    cursor: pointer;
+    color: #658B6F;
+}
+
+/* SEARCH HISTORY */
+#search-history-container {
+    text-align: center;
+    height: 1000px;
+    margin-top: 25px;
+}
+
+#search-history-container h6 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+footer {
+    background: #C4CDC1;
+    border: 1px solid #969C94;
+    border-radius: 7px;
+    margin: 25px 0 auto 0;
+    padding: 10px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 0;
+    height: max-content;
+}
+
+footer h6 a {
+    color: #369baa;
+    font-style: italic;
+}
+
+footer h6 a:hover {
+    cursor: pointer;
+    color: #658B6F;
+}
