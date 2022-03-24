@@ -34,3 +34,10 @@ Made with ❤️ by
 
 ## Screenshots of covid-risk-tracking-site:
 
+# Main Page:
+![working-ui](https://user-images.githubusercontent.com/96638258/159818859-f06314b3-07bc-4363-a6c5-1c07f3c46fef.PNG)
+
+# Comparison Feature:
+![compare](https://user-images.githubusercontent.com/96638258/159819447-55584eb8-7679-4b86-9456-ee8e8063e1a7.PNG)
+
+
