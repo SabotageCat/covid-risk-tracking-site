@@ -1,6 +1,3 @@
-# covid-risk-tracking-site
-=======
-=======
 # # covid-risk-tracking-site
 
 
@@ -44,5 +41,4 @@ Made with ❤️ by
 
 ## Jumbotron Img Source:
 NASA's iss040e123843 img: https://images.nasa.gov/details-iss040e123843 
-Download img: images-assets.nasa.gov/image/iss040e123843/iss040e123843~orig.jpg
 
