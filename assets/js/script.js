@@ -13,16 +13,17 @@ function covidDataSet(event) {
     fetch(apiUrl).then(function(response) {
         return response.json()
     }).then(function(data) {
-        // if (initial search) else (compare)
+        // if (initial search) else (compare countries)
         if (!document.getElementById("country-1")) {
 
             // select user country option
             var countryOption = document.getElementById("country-option");
             var countrySelected = countryOption.options[countryOption.selectedIndex].value;
 
-            // Issue user warning if no country is selected
+            // if no country is selected
             if (countrySelected == false) {
-                return userWarning();
+                // alert user to select an additional country
+                return userWarning() ;
             } else {
                 document.getElementById("current-search-info").innerHTML = "";
             }
@@ -47,7 +48,11 @@ function covidDataSet(event) {
 
             // Issue user warning if no country is selected
             if (countrySelected2 == "Please Select a Country") {
+                // display stats of the primary country
                 displayCovidStatsPrimary(data[countrySelected1]);
+                // add to search history
+                searchHistory(data[countrySelected1].location, countrySelected1);
+                // alert user to select an additional country
                 return userWarning();
             }
 
@@ -273,8 +278,7 @@ function searchHistory(country1, country1Value, country2, country2Value) {
     document.getElementById("search-history-buttons").addEventListener("click", returnSearchHistoryResult);
 };
 
-function removeDuplicates(countryObj) {
-
+function removeDuplicates(countryObj) { debugger;
     // return nothing if historyArr is empty
     if (historyArr.length === 0) {
         return
@@ -288,7 +292,7 @@ function removeDuplicates(countryObj) {
     });
 
     // if no match found in splice, return nothing
-    if (spliceNumber < 0 || historyArr.length == 1) {
+    if (spliceNumber < 0) {
         return
     }
 
@@ -302,6 +306,7 @@ function returnSearchHistoryResult(event) {
     var selectElFirst = document.getElementById("country-option");
     var selectElSecond = document.getElementById("country-option-2");
 
+    // if there are 2 coountries
     if (event.target.id.trim().search('&') > 0) {
         // split compared countries into 2 array strings
         var names = event.target.id.split("&");
@@ -310,7 +315,6 @@ function returnSearchHistoryResult(event) {
         names = names.map(function(element) {
             return element.trim();
         });
-        console.log(names);
 
         // set <select> to respective <option> and search again
         selectElFirst.value = names[0];
