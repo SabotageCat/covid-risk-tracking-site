@@ -138,7 +138,7 @@ header .total-infection-rates {
 /* CURRENT SEARCHES */
 #current-search-container {
     text-align: center;
-    min-height: 750px;
+    min-height: 1000px;
     height: fit-content;
     margin-top: 25px;
     background: #2F575D;
@@ -174,7 +174,7 @@ header .total-infection-rates {
 /* SEARCH HISTORY */
 #search-history-container {
     text-align: center;
-    height: 750px;
+    height: 1000px;
     margin-top: 25px;
     background: #2F575D;
 }
