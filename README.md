@@ -30,7 +30,7 @@ Made with ❤️ by
 * Grace Marcoux
 * Cortnie Muscari
 * Robert D. Gonzales
-*Carlos Ariel Mata Franco
+* Carlos Ariel Mata Franco
 
 ## Screenshots of covid-risk-tracking-site:
 
