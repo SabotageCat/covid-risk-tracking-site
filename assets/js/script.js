@@ -19,7 +19,6 @@ function covidDataSet(event) {
             // select user country option
             var countryOption = document.getElementById("country-option");
             var countrySelected = countryOption.options[countryOption.selectedIndex].value;
-            console.log(countrySelected);
 
             // Issue user warning if no country is selected
             if (countrySelected == false) {
@@ -86,16 +85,12 @@ function displayCovidStatsPrimary(country) {
     
     // determine risk rating
     if (infectionRate < 0.05) {
-        console.log("Low!");
         var riskRating = ["low", "LOW!"];
     } else if (infectionRate <= 0.099) {
-        console.log("Moderate!");
         var riskRating = ["moderate", "MODERATE!"];
     } else if (infectionRate <= 0.5) { 
-        console.log("High!");
         var riskRating = ["high", "HIGH!"];
     } else {
-        console.log("Severe!");
         var riskRating = ["severe", "SEVERE!"];
     }
 
@@ -183,16 +178,12 @@ function displayCovidStatsSecondary(country) {
     
     // determine risk rating
     if (infectionRate < 0.05) {
-        console.log("Low!");
         var riskRating = ["low", "LOW!"];
     } else if (infectionRate <= 0.099) {
-        console.log("Moderate!");
         var riskRating = ["moderate", "MODERATE!"];
     } else if (infectionRate <= 0.5) { 
-        console.log("High!");
         var riskRating = ["high", "HIGH!"];
     } else {
-        console.log("Severe!");
         var riskRating = ["severe", "SEVERE!"];
     }
 
@@ -245,7 +236,7 @@ function displayCovidStatsSecondary(country) {
 };
 
 function searchHistory(country1, country1Value, country2, country2Value) {
-    console.log(country1);
+
     // If no second country selected
     if (!country2) {
         var countryToPush = {"name": country1, "id0": country1Value};
@@ -254,7 +245,10 @@ function searchHistory(country1, country1Value, country2, country2Value) {
     } else {
         var countriesToPush = {"name": country1 + " & " + country2, "id0": country1Value, "id1": country2Value};
         historyArr.push(countriesToPush);
+        console.log(historyArr);
     }
+
+    // check historyArr for repeated objects and rearrange
 
     // set localStorage
     // localStorage.setItem("covid-country-search-items", historyArr);
@@ -267,7 +261,14 @@ function searchHistory(country1, country1Value, country2, country2Value) {
         var searchHistoryBtn = document.createElement("button");
         searchHistoryBtn.textContent = historyArr[i].name;
         searchHistoryBtn.className = "search-history-btn one-third";
-        searchHistoryBtn.id = historyArr[i].name;
+        debugger;
+        // if there is a second country
+        if ("id1" in historyArr[i] == true) {
+            searchHistoryBtn.id = historyArr[i].id0 + "&" + historyArr[i].id1;
+        } else {
+            searchHistoryBtn.id = historyArr[i].id0;
+        }
+        
         document.getElementById("search-history-buttons").appendChild(searchHistoryBtn);
     }
     document.getElementById("search-history-buttons").addEventListener("click", returnSearchHistoryResult);
@@ -275,22 +276,29 @@ function searchHistory(country1, country1Value, country2, country2Value) {
 
 function returnSearchHistoryResult(event) {
 
-    if (event.target.id.trim().search('<>') > 1) {
-        // split compared countries into 2 array strings
-        var names = event.target.id.split("<>");
+    // get <select> for both first and seconds country list
+    var selectElFirst = document.getElementById("country-option");
+    var selectElSecond = document.getElementById("country-option-2");
 
-        // trim each country name
+    if (event.target.id.trim().search('&') > 0) {
+        // split compared countries into 2 array strings
+        var names = event.target.id.split("&");
+
+        // trim each country name and push to names array
         names = names.map(function(element) {
             return element.trim();
         });
+        console.log(names);
 
-        console.log("finalNames: ", names[0], names[1]);
-
-        // search again
+        // set <select> to respective <option> and search again
+        selectElFirst.value = names[0];
+        selectElSecond.value = names[1];
+        covidDataSet(event);
+    } else {
+        selectElFirst.value = event.target.id;
+        selectElSecond.name = "Please Select a Country";
+        covidDataSet(event);
     }
-
-    // get id of search btn
-    var historyItem = event.target.id;
 
 }
 
