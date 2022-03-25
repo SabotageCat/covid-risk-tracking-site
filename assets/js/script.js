@@ -374,7 +374,7 @@ function saveCountry2(event) {
         riskLs2 = getTheRisk.innerHTML;
         localStorage.setItem('Risk Level country2', riskLs2);
 
-
+        putInSearch2()
     }
 }
 
@@ -412,6 +412,47 @@ function putInSearch() {
     var riskRatingEl = document.createElement("p");
     riskRatingEl.id = "first-risk-rating";
     riskRatingEl.innerHTML = window.localStorage.getItem("Risk Level country1");
+    pEl.appendChild(riskRatingEl);
+
+    divEl.appendChild(pEl)
+    searchHistory.appendChild(divEl)
+}
+
+
+function putInSearch2() {
+    
+    var searchHistory = document.getElementById("search-history-container");
+    var divEl = document.createElement("div");
+    divEl.id = "Country-History"
+    divEl.className = "one-half column second-country-div country-div"
+
+    var pEl = document.createElement("p");
+    pEl.textContent = "Current Statistics for:";
+
+    var countryHeaderEl = document.createElement("h5");
+    countryHeaderEl.innerHTML = window.localStorage.getItem('Name of country2')
+    pEl.appendChild(countryHeaderEl)
+
+    var flagEl = document.createElement("img");
+    var flagUrlLs = window.localStorage.getItem('Flag URL country2');
+    flagEl.id = "first-flag";
+    flagEl.src = flagUrlLs;
+    flagEl.alt = "flag of " + countryHeaderEl.innerHTML;
+    pEl.appendChild(flagEl);
+
+    var covidCasesEl = document.createElement("p");
+    covidCasesEl.id = "first-covid-cases";
+    covidCasesEl.innerText = window.localStorage.getItem('Weekly Covid Rate country2');
+    pEl.appendChild(covidCasesEl);
+
+    var vaxRateEl = document.createElement("p");
+    vaxRateEl.id = "first-vax-rate";
+    vaxRateEl.innerText = window.localStorage.getItem('Vaccination Rate country2');
+    pEl.appendChild(vaxRateEl);
+
+    var riskRatingEl = document.createElement("p");
+    riskRatingEl.id = "first-risk-rating";
+    riskRatingEl.innerHTML = window.localStorage.getItem("Risk Level country2");
     pEl.appendChild(riskRatingEl);
 
     divEl.appendChild(pEl)
