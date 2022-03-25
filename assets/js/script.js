@@ -379,7 +379,7 @@ function saveCountry2(event) {
 }
 
 function putInSearch() {
-    console.log('search button works')
+    
     var searchHistory = document.getElementById("search-history-container");
     var divEl = document.createElement("div");
     divEl.id = "Country-History"
@@ -390,9 +390,32 @@ function putInSearch() {
 
     var countryHeaderEl = document.createElement("h5");
     countryHeaderEl.innerHTML = window.localStorage.getItem('Name of country1')
-    countryHeaderLs = countryHeaderEl.innerHTML
-    console.log(countryHeaderLs)
+    pEl.appendChild(countryHeaderEl)
 
+    var flagEl = document.createElement("img");
+    var flagUrlLs = window.localStorage.getItem('Flag URL country1');
+    flagEl.id = "first-flag";
+    flagEl.src = flagUrlLs;
+    flagEl.alt = "flag of " + countryHeaderEl.innerHTML;
+    pEl.appendChild(flagEl);
+
+    var covidCasesEl = document.createElement("p");
+    covidCasesEl.id = "first-covid-cases";
+    covidCasesEl.innerText = window.localStorage.getItem('Weekly Covid Rate country1');
+    pEl.appendChild(covidCasesEl);
+
+    var vaxRateEl = document.createElement("p");
+    vaxRateEl.id = "first-vax-rate";
+    vaxRateEl.innerText = window.localStorage.getItem('Vaccination Rate country1');
+    pEl.appendChild(vaxRateEl);
+
+    var riskRatingEl = document.createElement("p");
+    riskRatingEl.id = "first-risk-rating";
+    riskRatingEl.innerHTML = window.localStorage.getItem("Risk Level country1");
+    pEl.appendChild(riskRatingEl);
+
+    divEl.appendChild(pEl)
+    searchHistory.appendChild(divEl)
 }
 
 
