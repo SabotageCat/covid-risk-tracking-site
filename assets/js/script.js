@@ -468,3 +468,6 @@ getCountryOptions(document.getElementById("country-option"));
 
 document.getElementById("current-search-container").addEventListener("click",saveCountry1);
 document.getElementById("current-search-container").addEventListener("click",saveCountry2);
+
+putInSearch()
+putInSearch2()
