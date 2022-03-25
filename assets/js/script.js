@@ -99,6 +99,8 @@ function displayCovidStatsPrimary(country) {
     // Add Country
     var countryHeaderEl = document.createElement("h5");
     countryHeaderEl.innerText = country.location;
+        // gave id name-of-country
+    countryHeaderEl.id = ('name-of-country-1');
     pEl.appendChild(countryHeaderEl);
 
     // Add flag
@@ -129,6 +131,13 @@ function displayCovidStatsPrimary(country) {
     riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1] + "</span>";
     pEl.appendChild(riskRatingEl);
 
+    // Add Save Button
+    var saveCardEl = document.createElement("button");
+    saveCardEl.id = "save-button";
+    saveCardEl.classList = "save-button-class-1";
+    saveCardEl.innerHTML = "Save";
+    pEl.appendChild(saveCardEl);
+
     // remove user warning
     if (document.getElementById("user-warning") == true) {
         currentSearchContainer.innerHTML = "";
@@ -144,6 +153,7 @@ function displayCovidStatsPrimary(country) {
     // Display outputs
     divEl.appendChild(pEl);
     currentSearchContainer.appendChild(divEl);
+
 
 };
 
@@ -190,6 +200,7 @@ function displayCovidStatsSecondary(country) {
     // Add Country
     var countryHeaderEl = document.createElement("h5");
     countryHeaderEl.innerText = country.location;
+    countryHeaderEl.id = ('name-of-country-2');
     pEl.appendChild(countryHeaderEl);
 
     // Add flag
@@ -219,6 +230,13 @@ function displayCovidStatsSecondary(country) {
     riskRatingEl.id = "second-risk-rating";
     riskRatingEl.innerHTML = "<span id='" + riskRating[0] + "'> Risk Assessment Rating: " + riskRating[1] + "</span>";
     pEl.appendChild(riskRatingEl);
+
+    // Add Save Button
+    var saveCardEl = document.createElement("button");
+    saveCardEl.id = "save-button";
+    saveCardEl.classList = "save-button-class-2";
+    saveCardEl.innerHTML = "Save";
+    pEl.appendChild(saveCardEl);
 
     // Display outputs
     divEl.appendChild(pEl);
@@ -306,9 +324,74 @@ function userWarning() {
     currentSearchContainer.appendChild(userWarning);
 };
 
+function saveCountry1(event) {
+    if (event.target.classList.contains('save-button-class-1')) {
+        console.log('the first save button works')
+
+        var getTheLocation = document.getElementById('name-of-country-1');
+        locationLs = getTheLocation.innerHTML;
+        localStorage.setItem('Name of country', locationLs);
+        console.log(locationLs)
+
+        var getTheFlag = document.getElementById('first-flag')
+        flagLs = getTheFlag.src;
+        localStorage.setItem('Flag URL', flagLs);
+        console.log(flagLs);
+
+        var getTheCovRate = document.getElementById('first-covid-cases')
+        covRateLs = getTheCovRate.innerText;
+        localStorage.setItem('Weekly Covid Rate', covRateLs);
+        console.log(covRateLs);
+
+        var getTheVaxRate = document.getElementById('first-vax-rate');
+        vaxRateLs = getTheVaxRate.innerText;
+        localStorage.setItem('Vaccination Rate:', vaxRateLs);
+        console.log(vaxRateLs);
+
+        var getTheRisk = document.getElementById('first-risk-rating');
+        riskLs = getTheRisk.innerHTML;
+        localStorage.setItem('risk level', riskLs);
+        console.log(riskLs);
+    }
+}
+
+function saveCountry2(event) {
+    if (event.target.classList.contains('save-button-class-2')) {
+        console.log('the second save button works')
+
+        var getTheLocation = document.getElementById('name-of-country-2');
+        locationLs = getTheLocation.innerHTML;
+        localStorage.setItem('Name of country', locationLs);
+        console.log(locationLs)
+
+        var getTheFlag = document.getElementById('second-flag')
+        flagLs = getTheFlag.src;
+        localStorage.setItem('Flag URL', flagLs);
+        console.log(flagLs);
+
+        var getTheCovRate = document.getElementById('second-covid-cases')
+        covRateLs = getTheCovRate.innerText;
+        localStorage.setItem('Weekly Covid Rate', covRateLs);
+        console.log(covRateLs);
+
+        var getTheVaxRate = document.getElementById('second-vax-rate');
+        vaxRateLs = getTheVaxRate.innerText;
+        localStorage.setItem('Vaccination Rate:', vaxRateLs);
+        console.log(vaxRateLs);
+
+        var getTheRisk = document.getElementById('second-risk-rating');
+        riskLs = getTheRisk.innerHTML;
+        localStorage.setItem('risk level', riskLs);
+        console.log(riskLs);
+    }
+}
+
+
 // Event listener for user search
 document.getElementById("search-button").addEventListener("click", covidDataSet);
 
 // dynamically create country <option> on page load
-
 getCountryOptions(document.getElementById("country-option"));
+
+document.getElementById("current-search-container").addEventListener("click",saveCountry1);
+document.getElementById("current-search-container").addEventListener("click",saveCountry2);
