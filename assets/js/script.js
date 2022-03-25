@@ -326,64 +326,73 @@ function userWarning() {
 
 function saveCountry1(event) {
     if (event.target.classList.contains('save-button-class-1')) {
-        console.log('the first save button works')
 
         var getTheLocation = document.getElementById('name-of-country-1');
         locationLs = getTheLocation.innerHTML;
-        localStorage.setItem('Name of country', locationLs);
-        console.log(locationLs)
+        localStorage.setItem('Name of country1', locationLs);
 
         var getTheFlag = document.getElementById('first-flag')
         flagLs = getTheFlag.src;
-        localStorage.setItem('Flag URL', flagLs);
-        console.log(flagLs);
+        localStorage.setItem('Flag URL country1', flagLs);
 
         var getTheCovRate = document.getElementById('first-covid-cases')
         covRateLs = getTheCovRate.innerText;
-        localStorage.setItem('Weekly Covid Rate', covRateLs);
-        console.log(covRateLs);
+        localStorage.setItem('Weekly Covid Rate country1', covRateLs);
 
         var getTheVaxRate = document.getElementById('first-vax-rate');
         vaxRateLs = getTheVaxRate.innerText;
-        localStorage.setItem('Vaccination Rate:', vaxRateLs);
-        console.log(vaxRateLs);
+        localStorage.setItem('Vaccination Rate country1', vaxRateLs);
 
         var getTheRisk = document.getElementById('first-risk-rating');
         riskLs = getTheRisk.innerHTML;
-        localStorage.setItem('risk level', riskLs);
-        console.log(riskLs);
+        localStorage.setItem('Risk Level country1', riskLs);
+
+        putInSearch()
     }
 }
 
 function saveCountry2(event) {
     if (event.target.classList.contains('save-button-class-2')) {
-        console.log('the second save button works')
 
         var getTheLocation = document.getElementById('name-of-country-2');
-        locationLs = getTheLocation.innerHTML;
-        localStorage.setItem('Name of country', locationLs);
-        console.log(locationLs)
+        locationLs2 = getTheLocation.innerHTML;
+        localStorage.setItem('Name of country country2', locationLs2);
 
         var getTheFlag = document.getElementById('second-flag')
-        flagLs = getTheFlag.src;
-        localStorage.setItem('Flag URL', flagLs);
-        console.log(flagLs);
+        flagLs2 = getTheFlag.src;
+        localStorage.setItem('Flag URL country2', flagLs2);
 
         var getTheCovRate = document.getElementById('second-covid-cases')
-        covRateLs = getTheCovRate.innerText;
-        localStorage.setItem('Weekly Covid Rate', covRateLs);
-        console.log(covRateLs);
+        covRateLs2 = getTheCovRate.innerText;
+        localStorage.setItem('Weekly Covid Rate country2', covRateLs2);
 
         var getTheVaxRate = document.getElementById('second-vax-rate');
-        vaxRateLs = getTheVaxRate.innerText;
-        localStorage.setItem('Vaccination Rate:', vaxRateLs);
-        console.log(vaxRateLs);
+        vaxRateLs2 = getTheVaxRate.innerText;
+        localStorage.setItem('Vaccination Rate country2', vaxRateLs2);
 
         var getTheRisk = document.getElementById('second-risk-rating');
-        riskLs = getTheRisk.innerHTML;
-        localStorage.setItem('risk level', riskLs);
-        console.log(riskLs);
+        riskLs2 = getTheRisk.innerHTML;
+        localStorage.setItem('Risk Level country2', riskLs2);
+
+
     }
+}
+
+function putInSearch() {
+    console.log('search button works')
+    var searchHistory = document.getElementById("search-history-container");
+    var divEl = document.createElement("div");
+    divEl.id = "Country-History"
+    divEl.className = "one-half column second-country-div country-div"
+
+    var pEl = document.createElement("p");
+    pEl.textContent = "Current Statistics for:";
+
+    var countryHeaderEl = document.createElement("h5");
+    countryHeaderEl.innerHTML = window.localStorage.getItem('Name of country1')
+    countryHeaderLs = countryHeaderEl.innerHTML
+    console.log(countryHeaderLs)
+
 }
 
 
