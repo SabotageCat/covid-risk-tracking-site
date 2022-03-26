@@ -58,7 +58,8 @@ header .total-infection-rates {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     margin-bottom: -4px;
-    color: #c4cdc1;
+    color: #96cea5;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #jumbotron-image-container { 
@@ -211,14 +212,6 @@ header .total-infection-rates {
     background: #658B6F;
     cursor: pointer;
 }
-
-
-
-/* justify-content: center;
-    text-align: center;
-    inline-size: min-content;
-    overflow-wrap: break-word;
-     */
 
 /* FOOTER */
 footer {
