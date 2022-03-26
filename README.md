@@ -1,4 +1,4 @@
-# # covid-risk-tracking-site
+# COVID-19 Risk Tracker
 
 
 ## Purpose
@@ -9,18 +9,18 @@ The purpose of our project is to create a site that is easily accessible in whic
 This in order for the user to have a clearer level of safety when choosing a travel destination.
 
 ## Useful Features
-* Country risk assesment feature. Displays a selected country's current vaccination and infection rates along with a color for its risk level. Green (low), Yellow (moderate), Red (high)
-* Country risk/safety comparison feature. Displays the risk assesments of a pair of countrie's side by side respectively to make it easier for users to make a safer traveling choice.
-* Search History feature (For user's convenianc)
+* Country risk assesment feature: Displays a selected country's current vaccination and infection rates along with a color for its risk level. Green (low), Yellow (moderate), Orange (high) & Red (severe).
+* Country risk/safety comparison feature: Displays the risk assesments of a pair of countrie's side by side respectively to make it easier for users to make a safer traveling choice.
+* Search History feature (For user's convenience)
 
 
 ## Built With
 * HTML
 * CSS Skeleton: http://getskeleton.com/ 
 * JavaScript
-* Server Sided API's
+* Server Sided API's: https://ourworldindata.org/ & https://countryflagsapi.com/
 
-## Website
+## Deployed Website
 https://sabotagecat.github.io/covid-risk-tracking-site/
 
 ## Contribution
@@ -31,14 +31,18 @@ Made with ❤️ by
 * Robert D. Gonzales
 * Carlos Ariel Mata Franco
 
-## Screenshots of covid-risk-tracking-site:
+## Screenshots
 
-## Main Page:
+### Main Page:
 ![working-ui](https://user-images.githubusercontent.com/96638258/159818859-f06314b3-07bc-4363-a6c5-1c07f3c46fef.PNG)
 
-## Comparison Feature:
+### Comparison Feature:
 ![compare](https://user-images.githubusercontent.com/96638258/159819447-55584eb8-7679-4b86-9456-ee8e8063e1a7.PNG)
 
-## Jumbotron Img Source:
+### Scroll feature on Previous Search buttons:
+<img width="1440" alt="Scroll feature on previous search buttons" src="https://user-images.githubusercontent.com/98123372/160255752-1af54300-02f9-46c7-951c-c1c8e5fac77a.png">
+
+
+## Jumbotron Img Source
 NASA's iss040e123843 img: https://images.nasa.gov/details-iss040e123843 
 

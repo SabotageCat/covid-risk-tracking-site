@@ -32,6 +32,7 @@ header .header-text {
 header .header-text h1 {
     color: #c4cdc1;
     text-shadow: 3px 3px #244449;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 header .header-text h4 {
@@ -150,15 +151,27 @@ header .total-infection-rates {
     color: #c4cdc1;
 }
 
-#current-search-container button:hover {
+#current-search-container input:hover {
+    background: #658B6F;
+    border: #658B6F;
     cursor: pointer;
-    color: #658B6F;
+}
+
+.country-div {
+    box-shadow: 2px 2px #33C3F0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.country-div:hover {
+    box-shadow: 2px 2px #658B6F;
 }
 
 .country-div img {
     width: 100%;
     height: auto;
     border-radius: 7px;
+    max-height: 225px;
+    max-width: 340px;
 }
 
 #current-search-info h5 {
@@ -184,6 +197,27 @@ header .total-infection-rates {
     margin-bottom: 10px;
     color: #c4cdc1;
 }
+
+#search-history-buttons button {
+    background: #33C3F0;
+    border: none;
+    color: white; 
+    width: 95%;
+    overflow: scroll;
+}
+
+#search-history-buttons button:hover {
+    background: #658B6F;
+    cursor: pointer;
+}
+
+
+
+/* justify-content: center;
+    text-align: center;
+    inline-size: min-content;
+    overflow-wrap: break-word;
+     */
 
 /* FOOTER */
 footer {
