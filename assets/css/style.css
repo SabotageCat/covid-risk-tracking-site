@@ -32,6 +32,7 @@ header .header-text {
 header .header-text h1 {
     color: #c4cdc1;
     text-shadow: 3px 3px #244449;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 header .header-text h4 {
