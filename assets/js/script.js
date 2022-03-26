@@ -1,3 +1,5 @@
+// comparison is on or off
+var comparison = false;
 // object array for search history
 var historyArr = [];
 
@@ -14,7 +16,7 @@ function covidDataSet(event) {
         return response.json()
     }).then(function(data) {
         // if (initial search) else (compare countries)
-        if (!document.getElementById("country-1")) {
+        if (comparison === false) {
 
             // select user country option
             var countryOption = document.getElementById("country-option");
@@ -104,7 +106,7 @@ function displayCovidStatsPrimary(country) {
     divEl.id = "country-1";
 
     // if comparing then display sise-by-side
-    if (document.getElementById("country-1")) {
+    if (comparison === true) {
         divEl.className = "one-half column first-country-div country-div";
     } else {
         divEl.className = "column first-country-div country-div";
@@ -255,12 +257,18 @@ function searchHistory(country1, country1Value, country2, country2Value) {
     historyArr.unshift(countryObj);
 
     // set localStorage
-    // localStorage.setItem("covid-country-search-items", historyArr);
+    setLocal();
     
     // clear search btns
     document.getElementById("search-history-buttons").innerHTML = "";
 
     // create search history btns
+    createSearchHistoryBtns();
+
+};
+
+function createSearchHistoryBtns() {
+    // for loop through historyArr to generate searchHistoryBtns
     for (var i = 0; i < historyArr.length; i++) {
         var searchHistoryBtn = document.createElement("button");
         searchHistoryBtn.textContent = historyArr[i].name;
@@ -275,10 +283,12 @@ function searchHistory(country1, country1Value, country2, country2Value) {
         
         document.getElementById("search-history-buttons").appendChild(searchHistoryBtn);
     }
+        
+    // return search results on btn click
     document.getElementById("search-history-buttons").addEventListener("click", returnSearchHistoryResult);
-};
+}
 
-function removeDuplicates(countryObj) { debugger;
+function removeDuplicates(countryObj) {
     // return nothing if historyArr is empty
     if (historyArr.length === 0) {
         return
@@ -286,8 +296,6 @@ function removeDuplicates(countryObj) { debugger;
 
     // find splice number of any duplicate searchHistoryBtn
     var spliceNumber = historyArr.findIndex(function(objVal, objIndex) {
-        console.log(objVal.name, objIndex);
-        console.log(historyArr);
         return objVal.name == countryObj.name;
     });
 
@@ -302,12 +310,20 @@ function removeDuplicates(countryObj) { debugger;
 
 function returnSearchHistoryResult(event) {
 
+    if (!event.target.hasAttribute("class")) {
+        return;
+    }
+
     // get <select> for both first and seconds country list
     var selectElFirst = document.getElementById("country-option");
-    var selectElSecond = document.getElementById("country-option-2");
 
-    // if there are 2 coountries
+    // if there are 2 countries
     if (event.target.id.trim().search('&') > 0) {
+
+        createCompareOption();
+
+        var selectElSecond = document.getElementById("country-option-2");
+
         // split compared countries into 2 array strings
         var names = event.target.id.split("&");
 
@@ -322,13 +338,23 @@ function returnSearchHistoryResult(event) {
         covidDataSet(event);
     } else {
         selectElFirst.value = event.target.id;
-        selectElSecond.value = "Please Select a Country";
+
+        if (selectElSecond) {
+            selectElSecond.value = "Please Select a Country";
+        }
+        
         covidDataSet(event);
     }
 
 }
 
 function createCompareOption() {
+        if (comparison === true) {
+            return;
+        }
+
+        comparison = true;
+
         // get existing elements
         var formEl = document.querySelector("form");
         var compareBtn = document.getElementById("search-button");
@@ -407,9 +433,30 @@ function userWarning() {
     currentSearchContainer.appendChild(userWarning);
 };
 
+// set localStorage for earchHistoryBtns
+function setLocal() {
+    // swt historyArr to localStorage as string item "searchHistory"
+    localStorage.setItem("searchHistory", JSON.stringify(historyArr));
+}
+
+// get localstorage for searchHistoryBtns
+function getLocal() {
+    // if no search history in local storage then return nothing
+    if (localStorage.searchHistory) {
+        // set historyArr as parsed localStorage item, "searchHistory"
+        historyArr = JSON.parse(localStorage.getItem("searchHistory"));
+    } else {
+        return
+    }
+
+    createSearchHistoryBtns();
+}
+
+// load searchHistory on page laod
+getLocal();
+
 // Event listener for user search
 document.getElementById("search-button").addEventListener("click", covidDataSet);
 
 // dynamically create country <option> on page load
-
 getCountryOptions(document.getElementById("country-option"));

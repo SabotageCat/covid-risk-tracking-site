@@ -150,9 +150,19 @@ header .total-infection-rates {
     color: #c4cdc1;
 }
 
-#current-search-container button:hover {
+#current-search-container input:hover {
+    background: #658B6F;
+    border: #658B6F;
     cursor: pointer;
-    color: #658B6F;
+}
+
+.country-div {
+    box-shadow: 2px 2px #33C3F0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.country-div:hover {
+    box-shadow: 2px 2px #658B6F;
 }
 
 .country-div img {
@@ -192,13 +202,21 @@ header .total-infection-rates {
     border: none;
     color: white; 
     width: 95%;
+    overflow: scroll;
 }
 
-#search-history-buttons button .search-history-btn {
-    text-align: center;
-    height: fit-content;
-    
+#search-history-buttons button:hover {
+    background: #658B6F;
+    cursor: pointer;
 }
+
+
+
+/* justify-content: center;
+    text-align: center;
+    inline-size: min-content;
+    overflow-wrap: break-word;
+     */
 
 /* FOOTER */
 footer {
