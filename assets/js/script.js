@@ -1,3 +1,6 @@
+// object array for search history
+var historyArr = [];
+
 // temp flag, waiting for flag api
 var countryFlag = "https://www.flags.co.uk/client/uploads/HVYYZFxB25xBnATl9zjmfEakGu9w6pBVAKo4iXfx.jpeg";
 
@@ -10,19 +13,27 @@ function covidDataSet(event) {
     fetch(apiUrl).then(function(response) {
         return response.json()
     }).then(function(data) {
-        // if (initial search) else (compare)
+        // if (initial search) else (compare countries)
         if (!document.getElementById("country-1")) {
+
             // select user country option
             var countryOption = document.getElementById("country-option");
             var countrySelected = countryOption.options[countryOption.selectedIndex].value;
-            // Issue user warning if no country is selected
+
+            // if no country is selected
             if (countrySelected == false) {
-                return userWarning();
+                // alert user to select an additional country
+                return userWarning() ;
             } else {
                 document.getElementById("current-search-info").innerHTML = "";
             }
+
             // Send data request to displayCovidStats function
             displayCovidStatsPrimary(data[countrySelected]);
+
+            // Create search history
+            searchHistory(data[countrySelected].location, countrySelected);
+
             // Enable country comparison
             createCompareOption();
 
@@ -30,18 +41,29 @@ function covidDataSet(event) {
             // select user country option
             var countryOption1 = document.getElementById("country-option");
             var countrySelected1 = countryOption1.options[countryOption1.selectedIndex].value;
+
             // select user country option 2
             var countryOption2 = document.getElementById("country-option-2");
             var countrySelected2 = countryOption2.options[countryOption2.selectedIndex].value;
+
             // Issue user warning if no country is selected
             if (countrySelected2 == "Please Select a Country") {
+                // display stats of the primary country
                 displayCovidStatsPrimary(data[countrySelected1]);
+                // add to search history
+                searchHistory(data[countrySelected1].location, countrySelected1);
+                // alert user to select an additional country
                 return userWarning();
             }
+
             // Send data request to displayCovidStatsPrimary function
             displayCovidStatsPrimary(data[countrySelected1]);
+
             // Send data request to displayCovidStatsSecondary
             displayCovidStatsSecondary(data[countrySelected2]);
+
+            // Create search history
+            searchHistory(data[countrySelected1].location, countrySelected1, data[countrySelected2].location, countrySelected2);
         }
         
     }).catch(function() {
@@ -60,7 +82,6 @@ function displayCovidStatsPrimary(country) {
 
     // calculate infection rate
     if (!country.positive_rate) {
-        console.log("No positive rate!");
         var infectionRate = (country.new_cases_smoothed / 25000) * 100 + "%";
     } else {
         var infectionRate = country.positive_rate;
@@ -68,16 +89,12 @@ function displayCovidStatsPrimary(country) {
     
     // determine risk rating
     if (infectionRate < 0.05) {
-        console.log("Low!");
         var riskRating = ["low", "LOW!"];
     } else if (infectionRate <= 0.099) {
-        console.log("Moderate!");
         var riskRating = ["moderate", "MODERATE!"];
     } else if (infectionRate <= 0.5) { 
-        console.log("High!");
         var riskRating = ["high", "HIGH!"];
     } else {
-        console.log("Severe!");
         var riskRating = ["severe", "SEVERE!"];
     }
 
@@ -165,16 +182,12 @@ function displayCovidStatsSecondary(country) {
     
     // determine risk rating
     if (infectionRate < 0.05) {
-        console.log("Low!");
         var riskRating = ["low", "LOW!"];
     } else if (infectionRate <= 0.099) {
-        console.log("Moderate!");
         var riskRating = ["moderate", "MODERATE!"];
     } else if (infectionRate <= 0.5) { 
-        console.log("High!");
         var riskRating = ["high", "HIGH!"];
     } else {
-        console.log("Severe!");
         var riskRating = ["severe", "SEVERE!"];
     }
 
@@ -226,6 +239,94 @@ function displayCovidStatsSecondary(country) {
 
 };
 
+function searchHistory(country1, country1Value, country2, country2Value) {
+
+    // If no second country selected
+    if (!country2) {
+        var countryObj = {"name": country1, "id0": country1Value};
+    } else {
+        var countryObj = {"name": country1 + " & " + country2, "id0": country1Value, "id1": country2Value};
+    }
+
+    // remove duplicate countryObj in historyArr
+    removeDuplicates(countryObj);
+
+    // unshift new countryObj to front of historyArr
+    historyArr.unshift(countryObj);
+
+    // set localStorage
+    // localStorage.setItem("covid-country-search-items", historyArr);
+    
+    // clear search btns
+    document.getElementById("search-history-buttons").innerHTML = "";
+
+    // create search history btns
+    for (var i = 0; i < historyArr.length; i++) {
+        var searchHistoryBtn = document.createElement("button");
+        searchHistoryBtn.textContent = historyArr[i].name;
+        searchHistoryBtn.className = "search-history-btn";
+
+        // if there is a second country
+        if ("id1" in historyArr[i] == true) {
+            searchHistoryBtn.id = historyArr[i].id0 + "&" + historyArr[i].id1;
+        } else {
+            searchHistoryBtn.id = historyArr[i].id0;
+        }
+        
+        document.getElementById("search-history-buttons").appendChild(searchHistoryBtn);
+    }
+    document.getElementById("search-history-buttons").addEventListener("click", returnSearchHistoryResult);
+};
+
+function removeDuplicates(countryObj) { debugger;
+    // return nothing if historyArr is empty
+    if (historyArr.length === 0) {
+        return
+    }
+
+    // find splice number of any duplicate searchHistoryBtn
+    var spliceNumber = historyArr.findIndex(function(objVal, objIndex) {
+        console.log(objVal.name, objIndex);
+        console.log(historyArr);
+        return objVal.name == countryObj.name;
+    });
+
+    // if no match found in splice, return nothing
+    if (spliceNumber < 0) {
+        return
+    }
+
+    // splice historyArr and remove duplicate countryObj
+    historyArr.splice(spliceNumber, 1);
+}
+
+function returnSearchHistoryResult(event) {
+
+    // get <select> for both first and seconds country list
+    var selectElFirst = document.getElementById("country-option");
+    var selectElSecond = document.getElementById("country-option-2");
+
+    // if there are 2 coountries
+    if (event.target.id.trim().search('&') > 0) {
+        // split compared countries into 2 array strings
+        var names = event.target.id.split("&");
+
+        // trim each country name and push to names array
+        names = names.map(function(element) {
+            return element.trim();
+        });
+
+        // set <select> to respective <option> and search again
+        selectElFirst.value = names[0];
+        selectElSecond.value = names[1];
+        covidDataSet(event);
+    } else {
+        selectElFirst.value = event.target.id;
+        selectElSecond.value = "Please Select a Country";
+        covidDataSet(event);
+    }
+
+}
 
 function createCompareOption() {
         // get existing elements
