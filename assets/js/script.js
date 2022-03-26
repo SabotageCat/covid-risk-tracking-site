@@ -452,6 +452,20 @@ function getLocal() {
     createSearchHistoryBtns();
 }
 
+function currentInfectionRate() {
+    var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
+    var currentRate = document.getElementById("current-inf-rate");
+
+    fetch(apiUrl).then(function(response) {
+        return response.json()
+    }).then(function(data) {
+        console.log(data);
+        currentRate.innerText = "Global daily new COVID-19 infections: " + data.OWID_WRL.new_cases;
+    }).catch(function() {
+        alert("Err!");
+    });
+}
+
 // load searchHistory on page laod
 getLocal();
 
@@ -460,3 +474,6 @@ document.getElementById("search-button").addEventListener("click", covidDataSet)
 
 // dynamically create country <option> on page load
 getCountryOptions(document.getElementById("country-option"));
+
+// get current infectionrate to display
+currentInfectionRate();
