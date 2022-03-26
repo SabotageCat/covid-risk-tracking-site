@@ -39,6 +39,9 @@ Made with ❤️ by
 ### Comparison Feature:
 ![compare](https://user-images.githubusercontent.com/96638258/159819447-55584eb8-7679-4b86-9456-ee8e8063e1a7.PNG)
 
+###Scroll feature on Previous Search buttons:
+<img width="1440" alt="Scroll feature on previous search buttons" src="https://user-images.githubusercontent.com/98123372/160255691-c9b24d97-eedc-43b5-ad56-cc05e97f27bf.png">
+
 ## Jumbotron Img Source
 NASA's iss040e123843 img: https://images.nasa.gov/details-iss040e123843 
 
