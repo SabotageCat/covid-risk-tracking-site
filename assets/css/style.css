@@ -159,6 +159,8 @@ header .total-infection-rates {
     width: 100%;
     height: auto;
     border-radius: 7px;
+    max-height: 225px;
+    max-width: 340px;
 }
 
 #current-search-info h5 {
