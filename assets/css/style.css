@@ -187,6 +187,19 @@ header .total-infection-rates {
     color: #c4cdc1;
 }
 
+#search-history-buttons button {
+    background: #33C3F0;
+    border: none;
+    color: white; 
+    width: 95%;
+}
+
+#search-history-buttons button .search-history-btn {
+    text-align: center;
+    height: fit-content;
+    
+}
+
 /* FOOTER */
 footer {
     background: #C4CDC1;
