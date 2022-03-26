@@ -407,6 +407,16 @@ function userWarning() {
     currentSearchContainer.appendChild(userWarning);
 };
 
+// set localStorage for earchHistoryBtns
+function setLocal() {
+    localStorage.setItem("search-history", JSON.stringify(historyArr));
+}
+
+// get localstorage for searchHistoryBtns
+function getLocal() {
+    localStorage.getItem("search-history");
+}
+
 // Event listener for user search
 document.getElementById("search-button").addEventListener("click", covidDataSet);
 
