@@ -203,7 +203,8 @@ header .total-infection-rates {
     border: none;
     color: white; 
     width: 95%;
-    overflow: scroll;
+    overflow: auto;
+    overflow-y: hidden;
 }
 
 #search-history-buttons button:hover {
