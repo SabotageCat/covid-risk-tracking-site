@@ -58,7 +58,12 @@ header .total-infection-rates {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     margin-bottom: -4px;
-    color: #c4cdc1;
+    color: #ccddc6;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#current-inf-rate:hover {
+    color: #369baa;
 }
 
 #jumbotron-image-container { 
@@ -203,21 +208,14 @@ header .total-infection-rates {
     border: none;
     color: white; 
     width: 95%;
-    overflow: scroll;
+    overflow: auto;
+    overflow-y: hidden;
 }
 
 #search-history-buttons button:hover {
     background: #658B6F;
     cursor: pointer;
 }
-
-
-
-/* justify-content: center;
-    text-align: center;
-    inline-size: min-content;
-    overflow-wrap: break-word;
-     */
 
 /* FOOTER */
 footer {
