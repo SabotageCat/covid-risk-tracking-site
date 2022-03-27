@@ -76,18 +76,18 @@ header .total-infection-rates {
     background-repeat: no-repeat;
 }
 
-#search-history-container {
+/* #search-history-container {
     text-align: center;
     height: fit-content;
     min-height: 1000px;
     margin-top: 25px;
-}
+} */
 
-#current-search-container {
+/* #current-search-container {
     text-align: center;
     height: 1000px;
     margin-top: 25px;
-}
+} */
 
 #risk-ratings {
     padding: 25px;
@@ -144,7 +144,7 @@ header .total-infection-rates {
 /* CURRENT SEARCHES */
 #current-search-container {
     text-align: center;
-    min-height: 1000px;
+    min-height: 750px;
     height: fit-content;
     margin-top: 25px;
     background: #2F575D;
@@ -192,7 +192,8 @@ header .total-infection-rates {
 /* SEARCH HISTORY */
 #search-history-container {
     text-align: center;
-    height: 1000px;
+    min-height: 750px;
+    height: fit-content;
     margin-top: 25px;
     background: #2F575D;
 }
