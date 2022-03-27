@@ -383,32 +383,40 @@ function createCompareOption() {
 };
 
 function getCountryOptions(countryOption) {
-    // covid json data
-    var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
+    // if <option> in <select> isn't loaded, else copy <option> from first <select>
+    if (comparison === false) {
+        // covid json data
+        var apiUrl = "https://covid.ourworldindata.org/data/latest/owid-covid-latest.json";
 
-    // fetch json data
-    fetch(apiUrl).then(function(response) {
-        return response.json()
-    }).then(function(data) {
+        // fetch json data
+        fetch(apiUrl).then(function(response) {
+            return response.json()
+        }).then(function(data) {
 
-        // dynamically create country option selections for user
-        for (var i = 0; i < Object.keys(data).length; i++) {
-            if (!Object.values(data)[i].continent) {
-                // If not a country in json file then skip 
-                i++;
-            } else {
-                // create <option> for country in <select>
-                var optionEl = document.createElement("option");
-                optionEl.value = Object.keys(data)[i];
-                optionEl.text = Object.values(data)[i].location;
-                // append <option> to <select>
-                countryOption.appendChild(optionEl);
-            }
-        };
-        
-    }).catch(function() {
-        alert("Err!");
-    });
+            // dynamically create country option selections for user
+            for (var i = 0; i < Object.keys(data).length; i++) {
+                if (!Object.values(data)[i].continent) {
+                    // If not a country in json file then skip 
+                    i++;
+                } else {
+                    // create <option> for country in <select>
+                    var optionEl = document.createElement("option");
+                    optionEl.value = Object.keys(data)[i];
+                    optionEl.text = Object.values(data)[i].location;
+                    // append <option> to <select>
+                    countryOption.appendChild(optionEl);
+                }
+            };
+            
+        }).catch(function() {
+            alert("Err!");
+        });
+    } else {
+        var firstList = document.getElementById("country-option");
+        var secondList = document.getElementById("country-option-2");
+        // set second <select> <option> elements as the same as first <select> <option> elements
+        secondList.innerHTML = firstList.innerHTML;
+    }
 };
 
 // Display warning for user if no country selected
@@ -459,7 +467,6 @@ function currentInfectionRate() {
     fetch(apiUrl).then(function(response) {
         return response.json()
     }).then(function(data) {
-        console.log(data);
         currentRate.innerText = "Global daily new COVID-19 infections: " + data.OWID_WRL.new_cases;
     }).catch(function() {
         alert("Err!");

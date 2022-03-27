@@ -34,14 +34,13 @@ Made with ❤️ by
 ## Screenshots
 
 ### Main Page:
-![working-ui](https://user-images.githubusercontent.com/96638258/159818859-f06314b3-07bc-4363-a6c5-1c07f3c46fef.PNG)
+![image](https://user-images.githubusercontent.com/97492722/160267636-884e7106-e195-4243-8f93-7a338780e0e8.png)
 
-### Comparison Feature:
-![compare](https://user-images.githubusercontent.com/96638258/159819447-55584eb8-7679-4b86-9456-ee8e8063e1a7.PNG)
+### Comparison Feature & Search History Bar:
+![image](https://user-images.githubusercontent.com/97492722/160267709-7143a15a-d43d-4e88-9eb2-1056c5d58118.png)
 
-### Scroll feature on Previous Search buttons:
+### Scroll Feature on Search History Buttons:
 <img width="1440" alt="Scroll feature on previous search buttons" src="https://user-images.githubusercontent.com/98123372/160255752-1af54300-02f9-46c7-951c-c1c8e5fac77a.png">
-
 
 ## Jumbotron Img Source
 NASA's iss040e123843 img: https://images.nasa.gov/details-iss040e123843 
