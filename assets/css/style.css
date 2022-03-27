@@ -62,6 +62,10 @@ header .total-infection-rates {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+#current-inf-rate:hover {
+    color: #369baa;
+}
+
 #jumbotron-image-container { 
     background-image: url("../images/nasaworld.png"); 
     height: 350px;
