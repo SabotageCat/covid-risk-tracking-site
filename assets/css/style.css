@@ -13,6 +13,7 @@ body {
     font-family: sans-serif;
 }
 
+/* HEADER */
 header {
     margin: auto;
     text-align: center;
@@ -29,12 +30,14 @@ header .header-text {
     border-top-right-radius: 7px;
 }
 
+/* title */
 header .header-text h1 {
     color: #c4cdc1;
     text-shadow: 3px 3px #244449;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+/* phrase */
 header .header-text h4 {
     color: #ccddc6;
     font-style: italic;
@@ -43,6 +46,7 @@ header .header-text h4 {
     text-shadow: 2px 2px #244449;
 }
 
+/* GLOBAL DAILY NEW INFECTION: RATE */
 header .total-infection-rates {
     background: black;
     top: 0;
@@ -66,6 +70,7 @@ header .total-infection-rates {
     color: #369baa;
 }
 
+/* GLOBE */
 #jumbotron-image-container { 
     background-image: url("../images/nasaworld.png"); 
     height: 350px;
@@ -76,19 +81,8 @@ header .total-infection-rates {
     background-repeat: no-repeat;
 }
 
-/* #search-history-container {
-    text-align: center;
-    height: fit-content;
-    min-height: 1000px;
-    margin-top: 25px;
-} */
 
-/* #current-search-container {
-    text-align: center;
-    height: 1000px;
-    margin-top: 25px;
-} */
-
+/* RSIK ASSESSMENT */
 #risk-ratings {
     padding: 25px;
 }
@@ -126,6 +120,7 @@ header .total-infection-rates {
     text-shadow: 1px 1px #b1b8ae;
 }
 
+/* CDC website */
 .moreinfo {
     font-style: italic;
     text-align: center;
